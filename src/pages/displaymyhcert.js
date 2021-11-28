@@ -16,12 +16,18 @@ export class DisplayMyHcert extends AbstractPage {
         super(id)
     }
 
-    async enter(qrContent, historyData) {
+    async enter(qrContent) {
         console.log("PRESENT Enter", qrContent)
-//        if (historyData) { gotoPage("verifier"); return;}
-        // let qrContent = pageData.text
 
         qrContent = window.localStorage.getItem("MYEUDCC")
+        if (qrContent == null) {
+            this.render(html`
+            <div id="hcertFailed" class="w3-panel bkg-fail">
+                <h2>${T("There is no certificate.")}</h2>
+            </div>
+            `)
+            return
+        }
 
         let hcert = undefined
         let verified = false

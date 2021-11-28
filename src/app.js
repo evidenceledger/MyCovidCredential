@@ -23,7 +23,7 @@ export function route(pageName, classInstance) {
 window.route = route
 
 // The home page where to start and when refreshing the app
-var homePage = "intro"
+var homePage = "displaymyhcert"
 window.homePage = homePage
 
 export function setHomePage(page) {
@@ -188,7 +188,6 @@ function initialHeader() {
     <div class="w3-bar-block xlarge color-primary hide" id="mobileMenu">
         <a onclick='gotoPage("refreshKeys")' href="javascript:void(0)" class="w3-bar-item w3-large btn-menu focus-visible-only">${T("Update public keys")}</a>
         <a onclick='gotoPage("selectLanguage")' href="javascript:void(0)" class="w3-bar-item w3-large btn-menu focus-visible-only">${T("Language")}</a>
-        <a onclick='gotoPage("selectCamera")' href="javascript:void(0)" class="w3-bar-item w3-large btn-menu focus-visible-only">${T("Camera")}</a>
         <a onclick='gotoPage("help")' href="javascript:void(0)" class="w3-bar-item w3-large btn-menu focus-visible-only">${T("Help")}</a>
     </div>
     `
@@ -214,7 +213,8 @@ function initialScreen() {
         </div>
         `;
     
-    document.getElementById('intro').innerHTML = initialScreenHTML
+    //document.getElementById('intro').innerHTML = initialScreenHTML
+    document.getElementById('intro').innerHTML = ""
 }
 window.initialScreen = initialScreen
 
@@ -544,8 +544,8 @@ window.addEventListener('load', async (event) => {
 
     }
 
-    homePage = "displaymyhcert"
-    window.homePage = homePage
+    let location = window.location
+    let origin = location.origin
 
     // Check if we received a certificate via the URL
     let params = new URLSearchParams(document.location.search.substring(1));
@@ -558,7 +558,8 @@ window.addEventListener('load', async (event) => {
         if (verified !== false) {
             window.localStorage.setItem("MYEUDCC", eudcc)
 
-            gotoPage("displaymyhcert", eudcc)
+            window.location.replace(origin)
+//            gotoPage("displaymyhcert", eudcc)
 
         }
     } else {

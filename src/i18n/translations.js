@@ -144,6 +144,13 @@ export var translations = {
         "de": "Zertifikat ist abgelaufen",
         "it": "Il certificato è scaduto"
     },
+    "There is no certificate.": {
+        "es": "No hay ningún certificado.",
+        "ca": "No hi ha cap certificat.",
+        "fr": "Il n’y a pas de certificat",
+        "de": "Es gibt kein Zertifikat",
+        "it": "Non esiste un certificato"
+    },
     "Vaccination not completed.": {
         "es": "Pauta de vacunación no completada.",
         "ca": "El calendari de vacunació no s'ha completat.",
