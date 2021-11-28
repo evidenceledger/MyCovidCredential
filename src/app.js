@@ -544,6 +544,9 @@ window.addEventListener('load', async (event) => {
 
     }
 
+    homePage = "displaymyhcert"
+    window.homePage = homePage
+
     // Check if we received a certificate via the URL
     let params = new URLSearchParams(document.location.search.substring(1));
     let eudcc = params.get("eudcc");
@@ -554,10 +557,6 @@ window.addEventListener('load', async (event) => {
         let verified = await verifyReceivedQR(eudcc)
         if (verified !== false) {
             window.localStorage.setItem("MYEUDCC", eudcc)
-
-            homePage = "displaymyhcert"
-            window.homePage = homePage
-
 
             gotoPage("displaymyhcert", eudcc)
 
