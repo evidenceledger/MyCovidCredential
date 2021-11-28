@@ -1,0 +1,23 @@
+{
+  "name": "verifierel",
+  "version": "0.0.0",
+  "scripts": {
+    "workbox": "workbox generateSW workbox-config.js",
+    "dev": "vite",
+    "build": "vite build && node bump && npm run workbox",
+    "serve": "vite preview",
+    "deploygh": "npm run build && bash pushGH.sh"
+  },
+  "devDependencies": {
+    "vite": "^2.5.4",
+    "workbox-cli": "^6.3.0"
+  },
+  "dependencies": {
+    "@zxing/browser": "^0.0.9",
+    "@zxing/library": "^0.18.6",
+    "easyqrcodejs": "^4.4.6",
+    "lit-html": "^2.0.0",
+    "pako": "^2.0.4",
+    "workbox-window": "^6.3.0"
+  }
+}

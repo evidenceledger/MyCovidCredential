@@ -1,0 +1,113 @@
+/* Critical CSS */
+@media (min-width: 48em) {
+    :root {
+        font-size: calc(1rem + ((1vw - 0.48rem) * 1.3889));
+        /* Where: 1.3889 = 100 * font-size_difference / viewport_width_difference */
+
+        /* Safari resize fix */
+        min-height: 0vw;
+    }
+}
+:root {font-family: Roboto, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";}
+html{overflow-x:hidden;box-sizing: border-box;}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+html,
+body,
+p,
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  padding: 0;
+}
+html {
+  box-sizing: border-box;
+}
+body{max-width:980px}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: 500;
+    line-height: 1.2;
+}
+.h1, h1 {
+    font-size: calc(1.375rem + 1.5vw);
+}
+.h2, h2 {
+    font-size: calc(1.325rem + .9vw);
+}
+.h3, h3 {
+    font-size: calc(1.3rem + .6vw);
+}
+.h4, h4 {
+    font-size: calc(1.275rem + .3vw);
+}
+.h5, h5 {
+    font-size: calc(1.225rem + .1vw);
+}
+img{vertical-align:middle}
+.center{text-align:center!important}
+.margin-bottom{margin-bottom: 15px;}
+.fw-8{font-weight: 800;}
+.mb-16{margin-bottom: 16px;}
+.mb-32{margin-bottom: 32px;}
+.hide{display:none}
+.show{display:block}
+
+.row:after,.row:before{content:"";display:table;clear:both}
+.third{float:left;width:100%}
+@media (min-width:601px){.third{width:33.33333%}}
+
+.padding-16{padding-top:16px!important;padding-bottom:16px!important}
+.bar{width:100%;overflow:hidden;}
+.bar .bar-item{padding:8px 16px;float:left;width:auto;border:none;display:block;outline:0}
+.color-primary,.hover-color-primary:hover{color: white!important;background-color:#919597!important}
+.xlarge{font-size:24px!important}
+.btn{border:none;display:inline-block;padding:16px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap}
+.btn-menu{border:none;display:inline-block;padding:16px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap}
+.btn-menu{-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}   
+.btn-menu{color:white!important;background-color: #919597!important}
+.round-xlarge{border-radius:16px}
+.focus-visible-only:focus-visible {outline: 2px solid black !important;}
+.right{float:right!important}
+section,.section{padding:0.01em 10px;margin-top:0px;margin-bottom:10px;}
+.sect-white {
+    padding: 25px 15px 50px 15px;
+    background-color: white;
+    text-align: center;
+}
+.sect-green {
+    padding: 25px 15px 50px 15px;
+    background-color: #04FF00;
+    text-align: center;
+}
+.sect-dark {
+    padding: 25px 15px 50px 15px;
+    color:white;
+    background-color: #919597;
+    text-align: center;
+}
+
+.loader {
+    margin: auto;
+    z-index: 1;
+    width: 100px;
+    height: 100px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #919597;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+@-webkit-keyframes spin {
+    0% {-webkit-transform: rotate(0deg);}
+    100% {-webkit-transform: rotate(360deg);}
+}
+@keyframes spin {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
