@@ -181,7 +181,7 @@ function initialHeader() {
 
     var initialHeader = `
     <div class="bar xlarge color-primary">
-        <div class="bar-item" onclick="resetAndGoHome()" style="color: white;padding:10px">VerificaCOVID.gencat.cat</div>
+        <div class="bar-item" onclick="resetAndGoHome()" style="color: white;padding:10px">MeuCertificat.gencat.cat</div>
         <a href="javascript:void(0)" onclick="toggleMenu()" class="bar-item btn-menu right focus-visible-only">&#9776;</a>
     </div>
 
