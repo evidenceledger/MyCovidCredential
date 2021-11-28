@@ -1,4 +1,3 @@
-# VerificaCOVID
+# My EU DCC Credential
 
-https://verificacovid.netlify.app/
 
