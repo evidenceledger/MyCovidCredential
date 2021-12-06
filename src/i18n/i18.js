@@ -1,5 +1,5 @@
 import { AbstractPage } from '../pages/abstractpage'
-import { html } from 'lit-html';
+import { html } from 'uhtml';
 
 import ukflag from './flags/uk.png'
 import esflag from './flags/es.png'
@@ -86,8 +86,7 @@ export class SelectLanguage extends AbstractPage {
         console.log("Selecting language", l)
         window.preferredLanguage = l
         localStorage.setItem("preferredLanguage", l)
-        window.history.back()
-        window.initialHeader();
+        window.goHome()
     }
 }
 

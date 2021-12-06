@@ -144,13 +144,6 @@ export var translations = {
         "de": "Zertifikat ist abgelaufen",
         "it": "Il certificato è scaduto"
     },
-    "There is no certificate.": {
-        "es": "No hay ningún certificado.",
-        "ca": "No hi ha cap certificat.",
-        "fr": "Il n’y a pas de certificat",
-        "de": "Es gibt kein Zertifikat",
-        "it": "Non esiste un certificato"
-    },
     "Vaccination not completed.": {
         "es": "Pauta de vacunación no completada.",
         "ca": "El calendari de vacunació no s'ha completat.",
@@ -304,6 +297,13 @@ export var translations = {
         "de": "Hilfe",
         "it": "Aiuto" 
     },
+    "Frequently asked questions (FAQS)": {
+        "es": "Preguntas frecuentes (FAQS)",
+        "ca": "Preguntes freqüents (FAQS)",
+        "fr": "Preguntes freqüents (FAQS)",
+        "de": "Preguntes freqüents (FAQS)",
+        "it": "Preguntes freqüents (FAQS)" 
+    },
     "$help01": {
         "es": "El objetivo de esta aplicación es verificar la autenticidad y vigencia del Certificado Covid Digital Europeo",
         "ca": "L’objectiu d’aquesta aplicació és verificar l’autenticitat i vigència del Certificat Covid Digital Europeu.",
@@ -383,6 +383,150 @@ export var translations = {
         "fr": "Si vous avez des questions, veuillez contacter l'adresse e-mail: ",
         "de": "Bei Fragen wenden Sie sich bitte an die E-Mail-Adresse: ",
         "it": "In caso di domande, contattare l'indirizzo e-mail: "
+    },
+    "$faqs_question_1": {
+        "ca": "-> Quins navegadors haig d’utilitzar?",
+        "es": "-> ¿Qué navegadores tengo que usar?",
+        "en": "-> Quins navegadors haig d’utilitzar?",
+        "fr": "-> Quins navegadors haig d’utilitzar?",
+        "de": "-> Quins navegadors haig d’utilitzar?",
+        "it": "-> Quins navegadors haig d’utilitzar?"
+    },
+    "$faqs_answer_1": {
+        "ca": "En la mesura del possible, recomanem que en els mòbils Android s’utilitzi el Google Chrome i en cas de no tenir-lo, el Mozzila FireFox. En cas de tenir un dispositiu IOS, es recomana el Safari.",
+        "es": "En la medida de lo posible, se recomienda que los móviles Android utilicen Google Chrome y en caso de no tenerlo, Mozzila FireFox. En caso de tener un dispositivo IOS, se recomienda Safari.",
+        "en": "En la mesura del possible, recomanem que en els mòbils Android, s’utilitzi el Google Chrome i en cas de no tenir-lo, el Mozzila FireFox. En cas de tenir un dispositiu IOS, es recomana el Safari.",
+        "fr": "En la mesura del possible, recomanem que en els mòbils Android, s’utilitzi el Google Chrome i en cas de no tenir-lo, el Mozzila FireFox. En cas de tenir un dispositiu IOS, es recomana el Safari.",
+        "de": "En la mesura del possible, recomanem que en els mòbils Android, s’utilitzi el Google Chrome i en cas de no tenir-lo, el Mozzila FireFox. En cas de tenir un dispositiu IOS, es recomana el Safari.",
+        "it": "En la mesura del possible, recomanem que en els mòbils Android, s’utilitzi el Google Chrome i en cas de no tenir-lo, el Mozzila FireFox. En cas de tenir un dispositiu IOS, es recomana el Safari."
+    },
+    "$faqs_question_2": {
+        "ca": "-> L’aplicació no funciona, què faig? ",
+        "es": "-> La aplicación no funciona, ¿qué hago?",
+        "en": "-> L’aplicació no funciona, què faig? ",
+        "fr": "-> L’aplicació no funciona, què faig? ",
+        "de": "-> L’aplicació no funciona, què faig? ",
+        "it": "-> L’aplicació no funciona, què faig? "
+    },
+    "$faqs_answer_2": {
+        "ca": "Primer de tot, refresca la pàgina web. Una altra opció és tornar a accedir a la URL. ",
+        "es": "Ante todo, refresca la pàgina web. Otra opción es volver a acceder a la URL",
+        "en": "Primer de tot, refresca la pàgina web. Una altra opció és tornar a accedir a la URL.",
+        "fr": "Primer de tot, refresca la pàgina web. Una altra opció és tornar a accedir a la URL.",
+        "de": "Primer de tot, refresca la pàgina web. Una altra opció és tornar a accedir a la URL.",
+        "it": "Primer de tot, refresca la pàgina web. Una altra opció és tornar a accedir a la URL."
+    },
+    "$faqs_question_3": {
+        "ca": "-> Cal que doni permisos a la càmera del dispositiu? ",
+        "es": "-> ¿Es necesario dar permisos a la cámara del dispositivo?",
+        "en": "-> Cal que doni permisos a la càmera del dispositiu? ",
+        "fr": "-> Cal que doni permisos a la càmera del dispositiu? ",
+        "de": "-> Cal que doni permisos a la càmera del dispositiu? ",
+        "it": "-> Cal que doni permisos a la càmera del dispositiu? "
+    },
+    "$faqs_answer_3": {
+        "ca": "Sí, aquesta aplicació necessita l’ús de la càmera per poder validar els QR’s. ",
+        "es": "Sí, esta aplicación necesita el uso de la cámara para poder validar los QR's.",
+        "en": "Sí, aquesta aplicació necessita l’ús de la càmera per poder validar els QR’s. ",
+        "fr": "Sí, aquesta aplicació necessita l’ús de la càmera per poder validar els QR’s. ",
+        "de": "Sí, aquesta aplicació necessita l’ús de la càmera per poder validar els QR’s. ",
+        "it": "Sí, aquesta aplicació necessita l’ús de la càmera per poder validar els QR’s. "
+    },
+    "$faqs_question_4": {
+        "ca": "-> Què faig si no he donat permisos a la càmera i ja no em torna a sortir el missatge? ",
+        "es": "-> ¿Qué hago si no he dado permisos a la cámara y ya no me vuelve a salir el mensaje?",
+        "en": "-> Què faig si no he donat permisos a la càmera i ja no em torna a sortir el missatge? ",
+        "fr": "-> Què faig si no he donat permisos a la càmera i ja no em torna a sortir el missatge? ",
+        "de": "-> Què faig si no he donat permisos a la càmera i ja no em torna a sortir el missatge? ",
+        "it": "-> Què faig si no he donat permisos a la càmera i ja no em torna a sortir el missatge? "
+    },
+    "$faqs_answer_4": {
+        "ca": "En cas que sense voler hagis denegat els permisos, hauràs de donar-los tu manualment. En aquests links trobaràs com fer-ho: ",
+        "es": "En caso de que no hayas dado los permisos, deberás darlos tú manualmente. En estos links encontrarás como hacerlo:",
+        "en": "En cas que sense voler hagis denegat els permisos, hauràs de donar-los tu manualment. En aquests links trobaràs com fer-ho: ",
+        "fr": "En cas que sense voler hagis denegat els permisos, hauràs de donar-los tu manualment. En aquests links trobaràs com fer-ho: ",
+        "de": "En cas que sense voler hagis denegat els permisos, hauràs de donar-los tu manualment. En aquests links trobaràs com fer-ho: ",
+        "it": "En cas que sense voler hagis denegat els permisos, hauràs de donar-los tu manualment. En aquests links trobaràs com fer-ho: "
+    },
+    "$faqs_question_5": {
+        "ca": "-> Què passa si no funciona o el certificat és d’un altre país? ",
+        "es": "-> ¿Qué pasa si no funciona o el certificado es de otro país?",
+        "en": "-> Què passa si no funciona o el certificat és d’un altre país? ",
+        "fr": "-> Què passa si no funciona o el certificat és d’un altre país? ",
+        "de": "-> Què passa si no funciona o el certificat és d’un altre país? ",
+        "it": "-> Què passa si no funciona o el certificat és d’un altre país? "
+    },
+    "$faqs_answer_5": {
+        "ca":" VerificaCOVID verifica els certificats COVID emesos pels estats membres de la UE i els certificats emesos pel Regne Unit. Podeu descarregar el certificat des de La Meva Salut",
+        "es": "VerificaCovid verifica los certificados COVID emitidos por los estados miembros de la UE y los certificados emitidos por el Reino Unido. Podéis descargar el certificado desde La Meva Salut",
+        "en": "VerificaCOVID verifica els certificats COVID emesos pels estats membres de la UE i els certificats emesos pel Regne Unit. Podeu descarregar el certificat des de La Meva Salut",
+        "fr": "VerificaCOVID verifica els certificats COVID emesos pels estats membres de la UE i els certificats emesos pel Regne Unit. Podeu descarregar el certificat des de La Meva Salut",
+        "de": "VerificaCOVID verifica els certificats COVID emesos pels estats membres de la UE i els certificats emesos pel Regne Unit. Podeu descarregar el certificat des de La Meva Salut",
+        "it": "VerificaCOVID verifica els certificats COVID emesos pels estats membres de la UE i els certificats emesos pel Regne Unit. Podeu descarregar el certificat des de La Meva Salut"
+    },
+    "$faqs_answer_5_2": {
+        "ca": "o bé podeu posar-vos en contacte amb el 061, o amb el vostre CAP.",
+        "es": "o bien podéis poneros en contacto con el 061, o con vuestro CAP",
+        "en": "o bé podeu posar-vos en contacte amb el 061, o amb el vostre CAP.",
+        "fr": "o bé podeu posar-vos en contacte amb el 061, o amb el vostre CAP.",
+        "de": "o bé podeu posar-vos en contacte amb el 061, o amb el vostre CAP.",
+        "it": "o bé podeu posar-vos en contacte amb el 061, o amb el vostre CAP."
+    },
+    "$faqs_question_6": {
+        "ca": "-> He tingut un problema amb l’aplicació. Com ho comunico? ",
+        "es": "-> He tenido un problema con la aplicación, ¿cómo lo comunico?",
+        "en": "-> He tingut un problema amb l’aplicació. Com ho comunico? ",
+        "fr": "-> He tingut un problema amb l’aplicació. Com ho comunico? ",
+        "de": "-> He tingut un problema amb l’aplicació. Com ho comunico? ",
+        "it": "-> He tingut un problema amb l’aplicació. Com ho comunico? "
+    },
+    "$faqs_answer_6": {
+        "ca":"Si heu tingut un problema amb el validador, quan reporteu la incidència informeu del model del mòbil, el navegador que esteu utilitzant i una captura de pantalla amb l’error que us mostra. ",
+        "es": "Si habéis tenido un problema con el validador, cuando reportéis la incidencia informad del modelo del móvil, el navegador que estáis utilitzando y una captura de pantalla con el error que os muestra.",
+        "en": "Si heu tingut un problema amb el validador, quan reporteu la incidència informeu del model del mòbil, el navegador que esteu utilitzant i una captura de pantalla amb l’error que us mostra. ",
+        "fr": "Si heu tingut un problema amb el validador, quan reporteu la incidència informeu del model del mòbil, el navegador que esteu utilitzant i una captura de pantalla amb l’error que us mostra. ",
+        "de": "Si heu tingut un problema amb el validador, quan reporteu la incidència informeu del model del mòbil, el navegador que esteu utilitzant i una captura de pantalla amb l’error que us mostra. ",
+        "it": "Si heu tingut un problema amb el validador, quan reporteu la incidència informeu del model del mòbil, el navegador que esteu utilitzant i una captura de pantalla amb l’error que us mostra. "
+    },
+    "$faqs_question_7": {
+        "ca": "-> He validat un QR i m’ha donat error amb el següent missatge: “Certificat no vàlid perquè la vacunació és massa recent”. Què vol dir? ",
+        "es": "-> He validado un QR y me ha dado error con el siguiente mensaje: “Certificado no válido porque la vacunación es demasiado reciente”. ¿Qué quiere decir?",
+        "en": "-> He validat un QR i m’ha donat error amb el següent missatge: “Certificat no vàlid perquè la vacunació és massa recent”. Què vol dir? ",
+        "fr": "-> He validat un QR i m’ha donat error amb el següent missatge: “Certificat no vàlid perquè la vacunació és massa recent”. Què vol dir? ",
+        "de": "-> He validat un QR i m’ha donat error amb el següent missatge: “Certificat no vàlid perquè la vacunació és massa recent”. Què vol dir? ",
+        "it": "-> He validat un QR i m’ha donat error amb el següent missatge: “Certificat no vàlid perquè la vacunació és massa recent”. Què vol dir? "
+    },
+    "$faqs_answer_7": {
+        "ca": "Actualment, segons la normativa vigent, han de passar 14 dies des de l’última dosi.",
+        "es": "Actualemente, según la normativa vigente, han de pasar 14 días desde la última dosis.",
+        "en": "Actualment, segons la normativa vigent, han de passar 14 dies des de l’última dosi.",
+        "fr": "Actualment, segons la normativa vigent, han de passar 14 dies des de l’última dosi.",
+        "de": "Actualment, segons la normativa vigent, han de passar 14 dies des de l’última dosi.",
+        "it": "Actualment, segons la normativa vigent, han de passar 14 dies des de l’última dosi."
+    },
+    "$faqs_answer_7_2": {
+        "ca": "Això, no obstant, no passa amb la segona (2/2) i tercera dosi (3/3), ja que des del moment que es posa la vacuna el certificat és vàlid.",
+        "es": "Esto, en cambio, no sucede con la segunda y la tercera dosi (3/3), ya que desde el momento que se pone la vacuna el certificado es válido.",
+        "en": "Això, no obstant, no passa amb la segona (2/2) i tercera dosi (3/3), ja que des del moment que es posa la vacuna el certificat és vàlid.",
+        "fr": "Això, no obstant, no passa amb la segona (2/2) i tercera dosi (3/3), ja que des del moment que es posa la vacuna el certificat és vàlid.",
+        "de": "Això, no obstant, no passa amb la segona (2/2) i tercera dosi (3/3), ja que des del moment que es posa la vacuna el certificat és vàlid.",
+        "it": "Això, no obstant, no passa amb la segona (2/2) i tercera dosi (3/3), ja que des del moment que es posa la vacuna el certificat és vàlid."
+    },
+    "$faqs_question_8": {
+        "ca": "-> Quan valido algun QR, es guarden dades en el mòbil o s’envien dades a algun lloc? ",
+        "es": "-> Cuando valido un QR, ¿se guardan datos en el móvil o se envían datos a algún sitio?",
+        "en": "-> Quan valido algun QR, es guarden dades en el mòbil o s’envien dades a algun lloc? ",
+        "fr": "-> Quan valido algun QR, es guarden dades en el mòbil o s’envien dades a algun lloc? ",
+        "de": "-> Quan valido algun QR, es guarden dades en el mòbil o s’envien dades a algun lloc? ",
+        "it": "-> Quan valido algun QR, es guarden dades en el mòbil o s’envien dades a algun lloc? "
+    },
+    "$faqs_answer_8": {
+        "ca": "No. No es guarda ni s’envia cap tipus de dades. Només es mostren momentàniament per pantalla. ",
+        "es": "No. No se guarda ni se envía ningún tipo de datos. Sólo se muestran momentáneamente por pantalla.",
+        "en": "No. No es guarda ni s’envia cap tipus de dades. Només es mostren momentàniament per pantalla. ",
+        "fr": "No. No es guarda ni s’envia cap tipus de dades. Només es mostren momentàniament per pantalla. ",
+        "de": "No. No es guarda ni s’envia cap tipus de dades. Només es mostren momentàniament per pantalla. ",
+        "it": "No. No es guarda ni s’envia cap tipus de dades. Només es mostren momentàniament per pantalla. "
     }
 
 }

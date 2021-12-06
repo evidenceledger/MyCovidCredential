@@ -1,12 +1,12 @@
 //import { gotoPage } from "../router";
 var gotoPage = window.gotoPage
-import { html } from 'lit-html';
+import { html } from 'uhtml';
 import {log} from '../log'
 import { BrowserQRCodeReader } from '@zxing/browser';
 import { AbstractPage } from './abstractpage'
 
 // This is to facilitate debugging of certificates
-var testQRdata = "Put here the data for the QR of the certificate"
+var testQRdata = "HC1:set the data for the test QR here"
 
 var testQR = {
     text: testQRdata
@@ -32,7 +32,10 @@ export class ScanQrPage extends AbstractPage {
 
     }
 
-    async enter() {
+    async enter(displayPage) {
+        console.log("SCANQR Enter: ", displayPage)
+
+        if (!displayPage) {displayPage = "displayhcert"}
 
         // If debugging, just try to decode the test QR
         if (debugging) {
@@ -54,9 +57,7 @@ export class ScanQrPage extends AbstractPage {
             selectedCameraId == undefined
         }
 
-        let theHtml = html`
-            ${this.videoElem}
-        `;
+        let theHtml = html`${this.videoElem}`;
 
         // Prepare the screen, waiting for the video
         this.render(theHtml)
@@ -94,7 +95,7 @@ export class ScanQrPage extends AbstractPage {
                     // Stop scanning
                     controls.stop()
                     // And process the scanned QR code
-                    processQRpiece(result)
+                    processQRpiece(result, displayPage)
                 }
 
             }
@@ -123,7 +124,7 @@ const QR_URL = 1
 const QR_MULTI = 2
 const QR_HC1 = 3
 
-async function processQRpiece(readerResult) {
+async function processQRpiece(readerResult, displayPage) {
     let qrData = readerResult.text
 
     let qrType = detectQRtype(readerResult)
@@ -139,7 +140,8 @@ async function processQRpiece(readerResult) {
 
     // Handle HCERT data
     if (qrType === QR_HC1) {
-        gotoPage("displayhcert", qrData)
+        console.log("Going to ", displayPage)
+        gotoPage(displayPage, qrData)
         return true;
     }
 

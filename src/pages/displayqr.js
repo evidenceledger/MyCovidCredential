@@ -1,5 +1,5 @@
 import { AbstractPage } from './abstractpage'
-import { html } from 'lit-html';
+import { html } from 'uhtml';
 import { QRCode } from 'easyqrcodejs'
 
 export class DisplayQR extends AbstractPage {

@@ -1,35 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="stylesheet" href="./app.css">
-    <script type="module" src="./app.js"></script>
+    <link rel="stylesheet" href="./css/w3full.css">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="El meu certificat COVID EU" />
+    <meta name="description" content="Verificació de certificats COVID EU" />
     <meta name="theme-color" content="#919597">
-    <title>El meu certificat COVID EU</title>
+    <title>Verificació de certificats COVID EU</title>
     <meta name="description"
-        content="El meu certificat COVID EU"
-    >
-    <meta itemprop="name" content="El meu certificat COVID EU">
+        content="Verificació dels certificats COVID emesos pels Estats membres de la UE i també els certificats emesos pel Regne Unit en el mateix format que el Certificat COVID digital de la UE">
+    <meta itemprop="name" content="Verificació de certificats COVID EU">
     <meta itemprop="description"
-        content="El meu certificat COVID EU"
-    >
+        content="Verificació dels certificats COVID emesos pels Estats membres de la UE i també els certificats emesos pel Regne Unit en el mateix format que el Certificat COVID digital de la UE">
     <!-- Facebook Meta Tags -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="El meu certificat COVID EU">
+    <meta property="og:title" content="Verificació de certificats COVID EU">
     <meta property="og:description"
-        content="El meu certificat COVID EU">
+        content="Verificació dels certificats COVID emesos pels Estats membres de la UE i també els certificats emesos pel Regne Unit en el mateix format que el Certificat COVID digital de la UE">
     <link rel="manifest" href="./manifest.webmanifest">
-
-    <link rel="stylesheet" href="/css/w3full.css" media="print" onload="this.media='all'; this.onload=null;">
 
     <link rel="icon" type="image/png" href="./favicon.ico" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <meta name="apple-mobile-web-app-title" content="El meu certificat COVID EU" />
+    <meta name="apple-mobile-web-app-title" content="Verificació de certificats COVID EU" />
     <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+
+    <script type="module" src="./app.js"></script>
 
 </head>
 
@@ -39,10 +38,45 @@
 </header>
 
 <main>
+    <div class="mb-100"></div>
+    <div class="loader"></div>
 </main>
 
 <footer>
 </footer>
+
+<script type="module">
+import {render, html, svg} from 'uhtml';
+import {HeaderBar} from './pages/headerbar.js'
+HeaderBar();
+</script>
+
+<script type="module">
+// *******************************************************
+// Translation support. This is a function in global scope
+// *******************************************************
+
+// Use "ca" as default language unless set explicitly by the
+// user in the application.
+var preferredLanguage = "ca"
+let l = localStorage.getItem("preferredLanguage")
+if (l) {preferredLanguage = l}
+// Set preferred language in global scope, for easy module access
+window.preferredLanguage = preferredLanguage
+
+import {translations} from "./i18n/translations.js"
+
+function T(key) {
+    if ((window.preferredLanguage === "en") && (key.charAt(0) != "$")) { return key }
+
+    let entry = translations[key]
+    if (entry === undefined) { return key }
+    let translated = entry[window.preferredLanguage]
+    if (translated === undefined) { return key }
+    return translated
+}
+window.T = T
+</script>
 
 </body>
 

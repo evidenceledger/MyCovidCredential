@@ -1,20 +1,21 @@
 // Get the build date of the application
 import buildDate from './version.txt?raw'
 
-// Store version in global Window object and in local storage
+// Store the version in global Window object and in local storage
 window.appVersion = buildDate
 window.localStorage.setItem("VERSION", appVersion)
 console.log("Version:", appVersion)
 
 import { log } from "./log";
 
-// **************************************
-// Minimal routing support
-// **************************************
+// ************************************************
+// This is a micro-router with enough functionality
+// ************************************************
 
-// To hold all pages in the app
+// This will hold all pages of the app
 var pages = new Map();
 
+// Register a new page name, associated to a class instance
 export function route(pageName, classInstance) {
     console.log("ROUTER: register page:", pageName)
     pages.set(pageName, classInstance)
@@ -22,14 +23,12 @@ export function route(pageName, classInstance) {
 // Make it available in the global scope
 window.route = route
 
-// The home page where to start and when refreshing the app
-var homePage = "displaymyhcert"
-window.homePage = homePage
+// The default home page where to start and when refreshing the app
+var homePage = ""
 
 export function setHomePage(page) {
     homePage = page
 }
-window.setHomePage = setHomePage
 
 // Listen for PopStateEvent (Back or Forward buttons are clicked)
 window.addEventListener("popstate", async function (event) {
@@ -100,20 +99,23 @@ export async function goHome() {
 }
 window.goHome = goHome
 
+// gotoPage transitions to the target page passing pageData object
+// It is up to the page to define the structure of pageData or if it is required
 export async function gotoPage(pageName, pageData) {
-    console.log("Inside gotPage", pageName)
+    console.log("Inside gotoPage:", pageName)
 
+    // Make sure the target page always receives an object even if empty
     if (!pageData) {
         pageData = {}
     }
 
-    // If the hash is not a registered page, go to the 404 error page
+    // If pageName is not a registered page, go to the 404 error page
     if (pages.get(pageName) === undefined) {
         console.error("Target page does not exist: ", pageName);
         pageName = "page404"
     }
 
-    // Create a new history state
+    // Create a new browser history state
     window.history.pushState(
         { pageName: pageName, pageData: pageData },
         `${pageName}`
@@ -124,108 +126,6 @@ export async function gotoPage(pageName, pageData) {
 }
 window.gotoPage = gotoPage
 
-// **************************************
-// Translation support
-// **************************************
-
-// Use "ca" as default language unless set explicitly by the
-// user in the application.
-var preferredLanguage = "ca"
-let l = localStorage.getItem("preferredLanguage")
-if (l) {preferredLanguage = l}
-// Set preferred language in global scope, for easy module access
-window.preferredLanguage = preferredLanguage
-
-import {translations} from "./i18n/translations.js"
-
-function T(key) {
-    if ((window.preferredLanguage === "en") && (key.charAt(0) != "$")) { return key }
-
-    let entry = translations[key]
-    if (entry === undefined) { return key }
-    let translated = entry[window.preferredLanguage]
-    if (translated === undefined) { return key }
-    return translated
-}
-window.T = T
-
-// **************************************
-// The header and navigation menu
-// **************************************
-
-//import logo from "./logo.png"
-
-function toggleMenu() {
-    let x = document.getElementById("mobileMenu")
-    x.classList.toggle("show")
-}
-function hideMenu() {
-    let x = document.getElementById("mobileMenu")
-    x.classList.remove("show")
-}
-function resetAndGoHome(e) {
-    hideMenu()
-    goHome()
-}
-function reloadPublickeys() {
-    hideMenu()
-    refreshTrustedKeys()
-    goHome()
-}
-window.toggleMenu = toggleMenu
-window.hideMenu = hideMenu
-window.resetAndGoHome = resetAndGoHome
-window.reloadPublickeys = reloadPublickeys
-
-function initialHeader() {
-
-    var initialHeader = `
-    <div class="bar xlarge color-primary">
-        <div class="bar-item" onclick="resetAndGoHome()" style="color: white;padding:10px">MeuCertificat.gencat.cat</div>
-        <a href="javascript:void(0)" onclick="toggleMenu()" class="bar-item btn-menu right focus-visible-only">&#9776;</a>
-    </div>
-
-    <div class="w3-bar-block xlarge color-primary hide" id="mobileMenu">
-        <a onclick='gotoPage("refreshKeys")' href="javascript:void(0)" class="w3-bar-item w3-large btn-menu focus-visible-only">${T("Update public keys")}</a>
-        <a onclick='gotoPage("selectLanguage")' href="javascript:void(0)" class="w3-bar-item w3-large btn-menu focus-visible-only">${T("Language")}</a>
-        <a onclick='gotoPage("help")' href="javascript:void(0)" class="w3-bar-item w3-large btn-menu focus-visible-only">${T("Help")}</a>
-    </div>
-    `
-    document.querySelector('header').innerHTML = initialHeader
-}
-window.initialHeader = initialHeader
-
-// Initial screen
-function initialScreen() {
-    var initialScreenHTML;
-        initialScreenHTML = `
-        <div class="sect-white">
-            <h2 class="margin-bottom" style="word-break:break-word">${T("EU Digital COVID Credential Verifier")}</h2>
-            <p>${T("$intro01")}</p>
-    
-            <div class="padding-16 center">
-    
-                <button onclick='gotoPage("verifier")' class="btn color-primary hover-color-primary
-                    xlarge round-xlarge focus-visible-only">
-                    ${T("Start verifying")}</button>
-    
-            </div>
-        </div>
-        `;
-    
-    //document.getElementById('intro').innerHTML = initialScreenHTML
-    document.getElementById('intro').innerHTML = ""
-}
-window.initialScreen = initialScreen
-
-// Create the header
-initialHeader();
-// Create the Intro page of the app
-let initElem = document.createElement('div')
-initElem.id = 'intro'
-document.querySelector('main').append(initElem)
-// And draw it
-initialScreen();
 
 // **************************************
 // Support for the Trusted Lists
@@ -240,21 +140,10 @@ import valueSets from "./json/value-sets.json"
 import ukRawKeys from "./json/uk_jwk_keys.json"
 
 // Set the initial value of the EU Trusted List, to be refreshed later
-var eu_trusted_keys = eu_jwk_keys
+// Use a global scope variable so it can be refreshed later
+window.eu_trusted_keys = eu_jwk_keys
 
-// This function refreshes the EU trusted list
-export async function refreshTrustedKeys() {
-    let response = await fetch("./eu_jwk_keys.json")
-    if (!response.ok) {
-        log.myerror("fetch for TL failed");
-        return;
-    }
-    eu_trusted_keys = await response.json()
-    return;
-}
-window.refreshTrustedKeys = refreshTrustedKeys
-
-
+// Search for a public key in the several trusted lists
 async function getTrustedKey(kid) {
 
     let undefinedKey = {
@@ -267,7 +156,7 @@ async function getTrustedKey(kid) {
     if (!kid) { log.myerror("kid is undefined"); return undefinedKey; }
     
     // First, try to get it from the PRODUCTION EU list
-    let entry = eu_trusted_keys[kid]
+    let entry = window.eu_trusted_keys[kid]
     if (entry) {
         console.log(`kid "${kid}" found in EU_PRO trusted list`)
         return {
@@ -438,34 +327,11 @@ document.addEventListener('DOMContentLoaded', async (event) => {
 });
 
 
-async function verifyReceivedQR(qrContent) {
-
-    // Load the CWT module
-    var CWT = await import("./components/cwt.js")
-
-    let hcert = undefined
-    let verified = false
-
-    // Decode credential verifying it at the same time
-    try {
-        hcert = await CWT.CWT.decodeHC1QR(qrContent, true);
-        verified = hcert[3]
-    } catch (error) {
-        log.myerror("Error verifying credential", error)
-    }
-
-    return verified
-
-}
-
-
 var INSTALL_SERVICE_WORKER = true
 
 // This function is called on first load and when a refresh is triggered in any page
 // When called the DOM is fully loaded and safe to manipulate
 window.addEventListener('load', async (event) => {
-
-    refreshTrustedKeys()
 
     // Install Service Worker only when in Production
     if (import.meta.env.DEV) {
@@ -475,17 +341,17 @@ window.addEventListener('load', async (event) => {
         console.log("In production")
     }
 
-    // Erase the body, including the loader message
-    // document.body.innerHTML = ""
-    // HeaderBar()
 
-    var mainElem = document.querySelector('main')
-
-    // Load the pages
+    // Lazy-load the pages of the application
     var pagesModule = await import("./all_pages.js")
     var pageDefs = pagesModule.pageDefs
+    setHomePage(pagesModule.homePage)
+   
+    // All pages go inside the <main> element
+    var mainElem = document.querySelector('main')
+    mainElem.innerHTML = ""
 
-    // Add the pages as child elements of the router
+    // Add the pages as childs of main
     for (let i = 0; i < pageDefs.length; i++) {
 
         // Create the instance of the associated class, passing the element to its constructor
@@ -501,7 +367,6 @@ window.addEventListener('load', async (event) => {
     }
 
     console.log("Home_page:", homePage)
-    setHomePage(homePage)
 
     // Install service worker for off-line support
     if (INSTALL_SERVICE_WORKER && ("serviceWorker" in navigator)) {
@@ -544,31 +409,8 @@ window.addEventListener('load', async (event) => {
 
     }
 
-    let location = window.location
-    let origin = location.origin
-
-    // Check if we received a certificate via the URL
-    let params = new URLSearchParams(document.location.search.substring(1));
-    let eudcc = params.get("eudcc");
-    if (eudcc !== null) {
-        eudcc = atob(eudcc)
-        console.log("EUDCC received:", eudcc)
-
-        let verified = await verifyReceivedQR(eudcc)
-        if (verified !== false) {
-            window.localStorage.setItem("MYEUDCC", eudcc)
-
-            window.location.replace(origin)
-//            gotoPage("displaymyhcert", eudcc)
-
-        }
-    } else {
-
-        // Show current page and execute logic on page transition
-        await goHome();
-    }
-
-
+    // Go to the home page of the application
+    await goHome();
 
 });
 

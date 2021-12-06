@@ -1,10 +1,10 @@
 import { AbstractPage } from '../pages/abstractpage'
-import { html } from 'lit-html';
+import { html } from 'uhtml';
 
 export class SelectCamera extends AbstractPage {
 
-    constructor(domElem) {
-        super(domElem)
+    constructor(id) {
+        super(id)
     }
 
     async enter() {

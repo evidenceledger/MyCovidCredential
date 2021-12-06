@@ -1,14 +1,12 @@
 import { AbstractPage } from './abstractpage'
-import { html } from 'lit-html';
-//import { T } from '../i18n/translate';
-//import { goHome, gotoPage } from "../router";
+import { html } from 'uhtml'
+
 var gotoPage = window.gotoPage
 
 export class SWNotify extends AbstractPage {
 
-    constructor(domElem) {
-        console.log("SWNOTIFY: inside constructor")
-        super(domElem)
+    constructor(id) {
+        super(id)
     }
 
     enter() {
@@ -29,7 +27,7 @@ export class SWNotify extends AbstractPage {
         
                 <div class="w3-padding-16">
         
-                    <button @click=${()=>gotoPage("spinner")} class="w3-button btn-color-primary btn-hover-color-primary w3-xlarge w3-round-xlarge">${T("Accept")}</button>
+                    <button @click=${()=>window.location.reload()} class="btn color-secondary hover-color-secondary w3-xlarge w3-round-xlarge">${T("Accept")}</button>
         
                 </div>
         

@@ -1,19 +1,17 @@
 import { AbstractPage } from './abstractpage'
-import { html } from 'lit-html';
-//import { T } from '../i18n/translate';
-//import { goHome, gotoPage } from "../router";
-var gotoPage = window.gotoPage
+import { html } from 'uhtml';
+import { HeaderBar } from './headerbar';
+
 
 export class RefreshKeys extends AbstractPage {
 
-    constructor(domElem) {
-        super(domElem)
+    constructor(id) {
+        super(id)
     }
 
-    enter() {
-        console.log("RefreshKeys: enter page")
+    async enter() {
 
-        window.refreshTrustedKeys()
+        await refreshTrustedKeys()
 
         let theHtml = html`
         <div class="container">
@@ -25,7 +23,7 @@ export class RefreshKeys extends AbstractPage {
                 
                 <div class="w3-padding-16">
         
-                    <button @click=${()=>this.acceptedButton()} class="w3-button btn-color-primary btn-hover-color-primary w3-xlarge w3-round-xlarge">${T("Accept")}</button>
+                    <button @click=${()=>this.acceptedButton()} class="btn color-secondary hover-color-secondary w3-xlarge w3-round-xlarge">${T("Accept")}</button>
         
                 </div>
         
@@ -37,8 +35,19 @@ export class RefreshKeys extends AbstractPage {
     }
 
     async acceptedButton() {
-        window.initialHeader();
-        window.history.back();
+        HeaderBar()
+        goHome()
     }
 }
 
+// This function refreshes the EU trusted list
+async function refreshTrustedKeys() {
+    let response = await fetch("./eu_jwk_keys.json")
+    if (!response.ok) {
+        log.myerror("fetch for TL failed");
+        return;
+    }
+    window.eu_trusted_keys = await response.json()
+    return;
+}
+window.refreshTrustedKeys = refreshTrustedKeys

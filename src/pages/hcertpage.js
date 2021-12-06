@@ -1,10 +1,8 @@
-import { html, render } from 'lit-html';
+import { html } from 'uhtml';
 import { log } from '../log'
 import { CWT } from "../components/cwt"
 import { AbstractPage } from './abstractpage'
 import { verifyHcert } from '../components/verifications'
-//import { T } from '../i18n/translate';
-//import { gotoPage } from '../router';
 import ok_image from "../img/ok.png"
 import error_image from "../img/error.png"
 import warning_image from "../img/warning.png"
@@ -18,10 +16,8 @@ export class DisplayHcert extends AbstractPage {
         super(id)
     }
 
-    async enter(qrContent, historyData) {
-        console.log("PRESENT Enter", qrContent)
-//        if (historyData) { gotoPage("verifier"); return;}
-        // let qrContent = pageData.text
+    async enter(qrContent) {
+        console.log("HCERT Enter", qrContent)
         let hcert = undefined
         let verified = false
         let thehtml = ""
@@ -76,7 +72,7 @@ export class DisplayHcert extends AbstractPage {
         let fullPage = html`
         ${thehtml}
         <div class="sect-white">
-            <button @click=${()=> gotoPage("verifier")} class="w3-button btn-color-primary btn-hover-color-primary
+            <button @click=${()=> gotoPage("verifier")} class="btn color-secondary hover-color-secondary
             w3-xlarge w3-round-xlarge">
             ${T("Verify another")}</button>
         </div>
@@ -98,10 +94,12 @@ export class DisplayHcert extends AbstractPage {
         // The credential
         let payload = cred[1];
 
+        // Parameters in case of correct validation
         let title = "Validated"
         let image = ok_image
         let color = "bkg-success"
 
+        // Modify the parameters if WARNING or ERROR
         if (verification.result === "WARNING") {
             title = "Warning"
             image = warning_image
@@ -113,11 +111,10 @@ export class DisplayHcert extends AbstractPage {
         }
 
         let thehtml = html`
-
             <div class="container">
 
-                <div id="hcertWarning" class="w3-panel ${color}">
-                    <img src=${image}  alt="">
+                <div id="hcertWarning" class=${`w3-panel ${color}`}>
+                    <img src=${image}  alt="" />
                     <h3>${T(title)}</h3>
                     <p>${verification.message}</p>
                 </div>
@@ -135,7 +132,8 @@ export class DisplayHcert extends AbstractPage {
            
             </div>
         `;
-    
+
+
         return thehtml;
     }
 
