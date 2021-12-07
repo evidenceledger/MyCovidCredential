@@ -19,6 +19,7 @@ export class MicroWallet extends AbstractPage {
     async enter() {
 
         // We can receive QRs via the URL or scanning with the camera
+        document.body.focus()
 
         // If URL specifies a QR then
         //     check it and store in local storage
