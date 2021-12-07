@@ -67,11 +67,11 @@ export class MicroWallet extends AbstractPage {
 
                 <div class="flex-container">
                     <div class="w3-card w-50 pd-10">
-                        <button onclick='${() => gotoPage("verifier", "AskUserToStoreQR")}' class="btn color-secondary hover-color-secondary large round-xlarge mb-16" style="margin:auto">${T("Scan QR")}</button>
+                        <button onclick='${() => gotoPage("verifier", "AskUserToStoreQR")}' class="btn color-secondary hover-color-secondary large round-xlarge mb-16">${T("Scan QR")}</button>
                         <p>You can use the camera of the mobile to scan a QR code. Press the button below to start the process.</p>
                     </div>
                     <div class="w3-card w-50 pd-10">
-                        <button @click=${()=>this.readClip()} class="btn color-secondary hover-color-secondary large round-xlarge mb-16" style="margin:auto">${T("Clipboard")}</button>
+                        <button @click=${()=>this.readClip()} class="btn color-secondary hover-color-secondary large round-xlarge mb-16">${T("Clipboard")}</button>
                         <p>If you have previously copied the QR code to the clipboard, you can press the button below to import the QR into this app.</p>
                     </div>
 

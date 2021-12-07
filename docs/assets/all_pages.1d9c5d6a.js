@@ -1,4 +1,4 @@
-var Go=Object.defineProperty;var zo=(r,e,t)=>e in r?Go(r,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):r[e]=t;var Sr=(r,e,t)=>(zo(r,typeof e!="symbol"?e+"":e,t),t);import{r as Xo,h as se,g as xn,d as Wo,s as Zo}from"./vendor.421725da.js";import{H as _i,l as bt}from"./index.f99f97a5.js";class ke{constructor(e){this.tagName===void 0&&(this.tagName="div"),this.domElem=document.createElement(this.tagName),e&&(this.domElem.id=e),this.domElem.style.display="none"}render(e){this.domElem.style.display="block",_i(),Xo(this.domElem,e)}}class Yo extends ke{constructor(e){super(e)}enter(){let e=se`<div class="sect-white">
+var Go=Object.defineProperty;var zo=(r,e,t)=>e in r?Go(r,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):r[e]=t;var Sr=(r,e,t)=>(zo(r,typeof e!="symbol"?e+"":e,t),t);import{r as Xo,h as se,g as xn,d as Wo,s as Zo}from"./vendor.421725da.js";import{H as _i,l as bt}from"./index.e5048fe9.js";class ke{constructor(e){this.tagName===void 0&&(this.tagName="div"),this.domElem=document.createElement(this.tagName),e&&(this.domElem.id=e),this.domElem.style.display="none"}render(e){this.domElem.style.display="block",_i(),Xo(this.domElem,e)}}class Yo extends ke{constructor(e){super(e)}enter(){let e=se`<div class="sect-white">
             <h2 class="margin-bottom" style="word-break:break-word">${T("EU Digital COVID Credential Verifier")}</h2>
             <p>${T("$intro01")}</p>
 
@@ -302,11 +302,11 @@ var Go=Object.defineProperty;var zo=(r,e,t)=>e in r?Go(r,e,{enumerable:!0,config
 
         <div class="flex-container center">
             <div class="w3-card w-50 pd-10">
-                <button @click=${()=>au("DisplayQR")} class="btn color-secondary hover-color-secondary large round-xlarge mb-16" style="margin:auto">${T("Show QR")}</button>
+                <button @click=${()=>au("DisplayQR")} class="btn color-secondary hover-color-secondary large round-xlarge mb-16">${T("Show QR")}</button>
                 <p>Display the QR code so it can be verified.</p>
             </div>
             <div class="w3-card w-50 pd-10">
-                <button @click=${()=>this.deleteQRCertificate()} class="btn color-secondary hover-color-secondary large round-xlarge mb-16" style="margin:auto">${T("Delete QR")}</button>
+                <button @click=${()=>this.deleteQRCertificate()} class="btn color-secondary hover-color-secondary large round-xlarge mb-16">${T("Delete QR")}</button>
                 <p>Delete the QR from this device.</p>
             </div>
 
@@ -349,11 +349,11 @@ var Go=Object.defineProperty;var zo=(r,e,t)=>e in r?Go(r,e,{enumerable:!0,config
 
                 <div class="flex-container">
                     <div class="w3-card w-50 pd-10">
-                        <button onclick='${()=>un("verifier","AskUserToStoreQR")}' class="btn color-secondary hover-color-secondary large round-xlarge mb-16" style="margin:auto">${T("Scan QR")}</button>
+                        <button onclick='${()=>un("verifier","AskUserToStoreQR")}' class="btn color-secondary hover-color-secondary large round-xlarge mb-16">${T("Scan QR")}</button>
                         <p>You can use the camera of the mobile to scan a QR code. Press the button below to start the process.</p>
                     </div>
                     <div class="w3-card w-50 pd-10">
-                        <button @click=${()=>this.readClip()} class="btn color-secondary hover-color-secondary large round-xlarge mb-16" style="margin:auto">${T("Clipboard")}</button>
+                        <button @click=${()=>this.readClip()} class="btn color-secondary hover-color-secondary large round-xlarge mb-16">${T("Clipboard")}</button>
                         <p>If you have previously copied the QR code to the clipboard, you can press the button below to import the QR into this app.</p>
                     </div>
 
