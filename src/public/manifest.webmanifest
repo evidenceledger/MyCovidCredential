@@ -13,7 +13,8 @@
             "type": "image/png"
         }
     ],
-    "start_url": "https://mycredential.eu/",
+    "scope": "/",
+    "start_url": "/index.html",
     "display": "standalone",
     "orientation": "portrait",
     "background_color": "#919597",
