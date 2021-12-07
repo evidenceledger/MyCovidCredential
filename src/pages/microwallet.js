@@ -46,12 +46,20 @@ export class MicroWallet extends AbstractPage {
         }
 
         // Check if we have a QR in the clipboard
-        let qrContent = await navigator.clipboard.readText()
+        try {
+            var qrContent = await navigator.clipboard.readText()
+        } catch (error) {
+            console.error("Error reading from clipboard:", error)
+        }
         if (qrContent.length > 100 && qrContent.startsWith("HC1:")) {
             
             console.log("EUDCC received:", qrContent)
-            await navigator.clipboard.writeText("")
-
+            try {
+                await navigator.clipboard.writeText("")
+            } catch (error) {
+                console.error("Error writing to clipboard:", error)
+            }
+    
             // Ask the user to accept the certificate
             await gotoPage("AskUserToStoreQR", qrContent)
             return;
