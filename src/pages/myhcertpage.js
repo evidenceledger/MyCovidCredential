@@ -20,7 +20,7 @@ export class DisplayMyHcert extends AbstractPage {
 
         // Check if we have a certificate in local storage
         //qrContent = window.localStorage.getItem("MYEUDCC")
-        qrContent = get("MYEUDCC")
+        qrContent = await get("MYEUDCC")
         if (qrContent == null) {
             this.render(html`
             <div id="hcertFailed" class="w3-panel bkg-fail">
@@ -267,11 +267,11 @@ export class AskUserToStoreQR extends AbstractPage {
     
 
 
-    saveQRCertificate() {
+    async saveQRCertificate() {
 
         // Store it in local storage
         //window.localStorage.setItem("MYEUDCC", this.QRCertificate)
-        set("MYEUDCC", this.QRCertificate)
+        await set("MYEUDCC", this.QRCertificate)
     
         // Reload the application with a clean URL
         window.location.replace(document.location.origin)

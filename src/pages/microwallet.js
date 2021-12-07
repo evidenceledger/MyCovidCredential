@@ -46,7 +46,7 @@ export class MicroWallet extends AbstractPage {
     
         // Check if we have a certificate in local storage
         //let qrContent = window.localStorage.getItem("MYEUDCC")
-        let qrContent = get("MYEUDCC")
+        let qrContent = await get("MYEUDCC")
         if (qrContent !== null) {
             // Display the certificate
             await gotoPage("displaymyhcert", qrContent)
@@ -178,11 +178,11 @@ export class AskUserToStoreQR extends AbstractPage {
     
 
 
-    saveQRCertificate() {
+    async saveQRCertificate() {
 
         // Store it in local storage
         //window.localStorage.setItem("MYEUDCC", this.QRCertificate)
-        set("MYEUDCC", this.QRCertificate)
+        await set("MYEUDCC", this.QRCertificate)
     
         // Reload the application with a clean URL
         window.location.replace(document.location.origin)

@@ -9,10 +9,10 @@ export class DisplayQR extends AbstractPage {
         super(id)
     }
 
-    enter() {
+    async enter() {
 
         //const myqr = window.localStorage.getItem("MYEUDCC")
-        const myqr = get("MYEUDCC")
+        const myqr = await get("MYEUDCC")
         console.log(myqr)
 
         let qrelement = document.createElement("div");
