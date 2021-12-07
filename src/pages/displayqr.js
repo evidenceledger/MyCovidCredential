@@ -75,11 +75,14 @@ export class DisplayQR extends AbstractPage {
                     text: 'MyCOVIDcertificate',
                 })
                 console.log('Share was successful.')
+                alert('Share was successful.')
             } catch (error) {
                 console.log('Sharing failed', error)
+                alert('Sharing failed', error)
             }
         } else {
             console.log(`Your system doesn't support sharing files.`);
+            alert.log(`Your system doesn't support sharing files.`);
         }
 
     }
