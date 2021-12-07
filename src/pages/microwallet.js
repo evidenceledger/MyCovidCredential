@@ -59,7 +59,6 @@ export class MicroWallet extends AbstractPage {
                 <h2>${T("There is no certificate.")}</h2>
             </div>
        `)
-       window.location.reload()
         return
     }
 }

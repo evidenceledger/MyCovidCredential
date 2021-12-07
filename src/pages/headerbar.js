@@ -48,6 +48,7 @@ export function HeaderBar() {
             <a onclick='${() => gotoPage("selectCamera")}' class="bar-item large btn-menu focus-visible-only">${T("Camera")}</a>
             <a onclick='${() => gotoPage("faqs")}' class="bar-item large btn-menu focus-visible-only">${T("FAQS")}</a>
             <a onclick='${() => gotoPage("help")}' class="bar-item large btn-menu focus-visible-only">${T("Help")}</a>
+            <a onclick='${() => window.location.reload()}' class="bar-item large btn-menu focus-visible-only">${T("Refresh app")}</a>
         </div>
       `;
 
