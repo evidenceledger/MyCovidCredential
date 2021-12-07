@@ -319,13 +319,13 @@ async function getPreferredVideoDevice() {
 window.getPreferredVideoDevice = getPreferredVideoDevice
 
 // Request camera access permission when DOM is loaded
-document.addEventListener('DOMContentLoaded', async (event) => {
-    console.log('DOM fully loaded and parsed');
+// document.addEventListener('DOMContentLoaded', async (event) => {
+//     console.log('DOM fully loaded and parsed');
 
-    // Get the best camera for QR scanning
-    getPreferredVideoDevice()
+//     // Get the best camera for QR scanning
+//     getPreferredVideoDevice()
 
-});
+// });
 
 
 var INSTALL_SERVICE_WORKER = true
