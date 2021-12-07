@@ -51,13 +51,14 @@ export class DisplayQR extends AbstractPage {
     }
 
 
-    pepe(e) {
-        console.log("Hola desde pepe")
+    async clipWrite(e) {
         e.preventDefault()
+
     }
 
     async share(e) {
         e.preventDefault()
+        alert("Hola que tal")
 
         console.log(e.target)
 
