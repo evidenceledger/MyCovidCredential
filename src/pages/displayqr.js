@@ -63,16 +63,20 @@ export class DisplayQR extends AbstractPage {
 
         try {
             var canvas = document.querySelector("#qrinside div canvas")
-            var dataurl = canvas.toDataURL()    
+            var dataurl = canvas.toDataURL()
+            alert("DataURL captured")
         } catch (error) {
             alert(error)
+            return
         }
 
         try {
             var theFile = this.dataURLtoFile(dataurl, "MyCOVIDcertificate.png")
-            var filesArray = [theFile]    
+            var filesArray = [theFile]
+            alert("File created")    
         } catch (error) {
             alert(error)
+            return
         }
 
         if (navigator.canShare && navigator.canShare({ files: filesArray })) {
@@ -91,7 +95,7 @@ export class DisplayQR extends AbstractPage {
             }
         } else {
             console.log(`Your system doesn't support sharing files.`);
-            alert.log(`Your system doesn't support sharing files.`);
+            alert(`Your system doesn't support sharing files.`);
         }
 
     }
