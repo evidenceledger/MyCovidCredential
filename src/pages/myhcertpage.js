@@ -6,6 +6,7 @@ import { verifyHcert } from '../components/verifications'
 import ok_image from "../img/ok.png"
 import error_image from "../img/error.png"
 import warning_image from "../img/warning.png"
+import { get, set } from 'idb-keyval';
 
 var gotoPage = window.gotoPage
 
@@ -18,7 +19,8 @@ export class DisplayMyHcert extends AbstractPage {
     async enter(qrContent) {
 
         // Check if we have a certificate in local storage
-        qrContent = window.localStorage.getItem("MYEUDCC")
+        //qrContent = window.localStorage.getItem("MYEUDCC")
+        qrContent = get("MYEUDCC")
         if (qrContent == null) {
             this.render(html`
             <div id="hcertFailed" class="w3-panel bkg-fail">
@@ -268,7 +270,8 @@ export class AskUserToStoreQR extends AbstractPage {
     saveQRCertificate() {
 
         // Store it in local storage
-        window.localStorage.setItem("MYEUDCC", this.QRCertificate)
+        //window.localStorage.setItem("MYEUDCC", this.QRCertificate)
+        set("MYEUDCC", this.QRCertificate)
     
         // Reload the application with a clean URL
         window.location.replace(document.location.origin)

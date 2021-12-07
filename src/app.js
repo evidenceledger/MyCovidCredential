@@ -2,6 +2,7 @@
 import buildDate from './version.txt?raw'
 
 // Store the version in global Window object and in local storage
+import { get, set } from 'idb-keyval';
 window.appVersion = buildDate
 window.localStorage.setItem("VERSION", appVersion)
 console.log("Version:", appVersion)

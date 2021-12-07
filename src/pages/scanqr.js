@@ -4,6 +4,7 @@ import { html } from 'uhtml';
 import {log} from '../log'
 import { BrowserQRCodeReader } from '@zxing/browser';
 import { AbstractPage } from './abstractpage'
+import { get, set } from 'idb-keyval';
 
 // This is to facilitate debugging of certificates
 var testQRdata = "HC1:set the data for the test QR here"

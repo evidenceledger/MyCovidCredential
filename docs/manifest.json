@@ -1,0 +1,34 @@
+{
+  "index.html": {
+    "file": "assets/index.3ddf4693.js",
+    "src": "index.html",
+    "isEntry": true,
+    "imports": [
+      "_vendor.f0563d7f.js"
+    ],
+    "dynamicImports": [
+      "all_pages.js",
+      "../node_modules/workbox-window/build/workbox-window.prod.es5.mjs"
+    ],
+    "css": [
+      "assets/index.85b8ad63.css"
+    ]
+  },
+  "_vendor.f0563d7f.js": {
+    "file": "assets/vendor.f0563d7f.js"
+  },
+  "all_pages.js": {
+    "file": "assets/all_pages.580a4d12.js",
+    "src": "all_pages.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor.f0563d7f.js",
+      "index.html"
+    ]
+  },
+  "../node_modules/workbox-window/build/workbox-window.prod.es5.mjs": {
+    "file": "assets/workbox-window.prod.es5.a2fa118e.js",
+    "src": "../node_modules/workbox-window/build/workbox-window.prod.es5.mjs",
+    "isDynamicEntry": true
+  }
+}

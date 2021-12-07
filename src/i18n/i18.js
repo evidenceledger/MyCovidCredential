@@ -1,5 +1,6 @@
 import { AbstractPage } from '../pages/abstractpage'
 import { html } from 'uhtml';
+import { get, set } from 'idb-keyval';
 
 import ukflag from './flags/uk.png'
 import esflag from './flags/es.png'

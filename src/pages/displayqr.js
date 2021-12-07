@@ -1,6 +1,7 @@
 import { AbstractPage } from './abstractpage'
 import { html } from 'uhtml';
 import { QRCode } from 'easyqrcodejs'
+import { get, set } from 'idb-keyval';
 
 export class DisplayQR extends AbstractPage {
 
@@ -10,7 +11,8 @@ export class DisplayQR extends AbstractPage {
 
     enter() {
 
-        const myqr = window.localStorage.getItem("MYEUDCC")
+        //const myqr = window.localStorage.getItem("MYEUDCC")
+        const myqr = get("MYEUDCC")
         console.log(myqr)
 
         let qrelement = document.createElement("div");

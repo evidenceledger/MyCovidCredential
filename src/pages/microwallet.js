@@ -3,6 +3,7 @@ import { log } from '../log'
 import { CWT } from "../components/cwt"
 import { AbstractPage } from './abstractpage'
 import { verifyHcert } from '../components/verifications'
+import { get, set } from 'idb-keyval';
 import ok_image from "../img/ok.png"
 import error_image from "../img/error.png"
 import warning_image from "../img/warning.png"
@@ -44,7 +45,8 @@ export class MicroWallet extends AbstractPage {
         }
     
         // Check if we have a certificate in local storage
-        let qrContent = window.localStorage.getItem("MYEUDCC")
+        //let qrContent = window.localStorage.getItem("MYEUDCC")
+        let qrContent = get("MYEUDCC")
         if (qrContent !== null) {
             // Display the certificate
             await gotoPage("displaymyhcert", qrContent)
@@ -179,7 +181,8 @@ export class AskUserToStoreQR extends AbstractPage {
     saveQRCertificate() {
 
         // Store it in local storage
-        window.localStorage.setItem("MYEUDCC", this.QRCertificate)
+        //window.localStorage.setItem("MYEUDCC", this.QRCertificate)
+        set("MYEUDCC", this.QRCertificate)
     
         // Reload the application with a clean URL
         window.location.replace(document.location.origin)

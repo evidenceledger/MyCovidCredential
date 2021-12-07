@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="./app.css">
-    <link rel="stylesheet" href="./css/w3full.css">
+    
+    
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Verificació de certificats COVID EU" />
@@ -28,8 +28,11 @@
     <meta name="apple-mobile-web-app-title" content="Verificació de certificats COVID EU" />
     <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
 
-    <script type="module" src="./app.js"></script>
+    
 
+  <script type="module" crossorigin src="./assets/index.3ddf4693.js"></script>
+  <link rel="modulepreload" href="./assets/vendor.f0563d7f.js">
+  <link rel="stylesheet" href="./assets/index.85b8ad63.css">
 </head>
 
 <body>
@@ -45,38 +48,9 @@
 <footer>
 </footer>
 
-<script type="module">
-import {render, html, svg} from 'uhtml';
-import {HeaderBar} from './pages/headerbar.js'
-HeaderBar();
-</script>
 
-<script type="module">
-// *******************************************************
-// Translation support. This is a function in global scope
-// *******************************************************
-import { get, set } from 'idb-keyval';
-// Use "ca" as default language unless set explicitly by the
-// user in the application.
-var preferredLanguage = "ca"
-let l = localStorage.getItem("preferredLanguage")
-if (l) {preferredLanguage = l}
-// Set preferred language in global scope, for easy module access
-window.preferredLanguage = preferredLanguage
 
-import {translations} from "./i18n/translations.js"
 
-function T(key) {
-    if ((window.preferredLanguage === "en") && (key.charAt(0) != "$")) { return key }
-
-    let entry = translations[key]
-    if (entry === undefined) { return key }
-    let translated = entry[window.preferredLanguage]
-    if (translated === undefined) { return key }
-    return translated
-}
-window.T = T
-</script>
 
 </body>
 
