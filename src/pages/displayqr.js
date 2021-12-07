@@ -61,11 +61,15 @@ export class DisplayQR extends AbstractPage {
 
         console.log(e.target)
 
-        let canvas = document.querySelector("#qrinside div canvas")
-        let dataurl = canvas.toDataURL()
+        try {
+            var canvas = document.querySelector("#qrinside div canvas")
+            var dataurl = canvas.toDataURL()    
+        } catch (error) {
+            alert(error)
+        }
 
         try {
-            let theFile = this.dataURLtoFile(dataurl, "MyCOVIDcertificate.png")
+            var theFile = this.dataURLtoFile(dataurl, "MyCOVIDcertificate.png")
             var filesArray = [theFile]    
         } catch (error) {
             alert(error)
