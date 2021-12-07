@@ -58,7 +58,6 @@ export class DisplayQR extends AbstractPage {
 
     async share(e) {
         e.preventDefault()
-        alert("Hola que tal")
 
         console.log(e.target)
 
@@ -69,6 +68,7 @@ export class DisplayQR extends AbstractPage {
         let filesArray = [theFile]
 
         if (navigator.canShare && navigator.canShare({ files: filesArray })) {
+            alert("Share is supported")
             try {
                 navigator.share({
                     files: filesArray,
