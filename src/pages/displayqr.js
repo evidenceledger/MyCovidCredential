@@ -33,7 +33,7 @@ export class DisplayQR extends AbstractPage {
 
         <div class="w3-padding-16 center">
 
-            <a @click=${async (e)=>await this.clipWrite(e)} id="imagetosave" href="" class="btn color-secondary hover-color-secondary w3-xlarge w3-round-xlarge">${T("Save locally")}</a>
+            <a @click=${async (e)=>await this.clipWrite(e)} id="imagetosave" href="" class="btn color-secondary hover-color-secondary w3-xlarge w3-round-xlarge">${T("Copy to clipboard")}</a>
 
         </div>
 
@@ -57,6 +57,7 @@ export class DisplayQR extends AbstractPage {
 
         await navigator.clipboard.writeText(this.qrContent)
         console.log("Copied to clipboard")
+        alert("Certificate copied to clipboard")
 
     }
 
