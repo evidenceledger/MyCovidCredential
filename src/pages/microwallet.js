@@ -185,7 +185,7 @@ export class AskUserToStoreQR extends AbstractPage {
         await set("MYEUDCC", this.QRCertificate)
     
         // Reload the application with a clean URL
-//        window.location.replace(document.location.origin)
+        window.location.replace(document.location.origin)
     
     }
     
