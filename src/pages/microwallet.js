@@ -32,16 +32,6 @@ export class MicroWallet extends AbstractPage {
         let params = new URLSearchParams(document.location.search.substring(1));
         let eudcc = params.get("eudcc");
 
-        // Check if we have a certificate in local storage
-        //let qrContent = window.localStorage.getItem("MYEUDCC")
-        let qrContent = await get("MYEUDCC")
-        if (qrContent !== null) {
-            // Display the certificate
-            await gotoPage("displaymyhcert", qrContent)
-            return;        
-        }
-
-
         // QR code found in URL. Process and display it
         if (eudcc !== null) {
             // Decode from Base64url
@@ -53,7 +43,15 @@ export class MicroWallet extends AbstractPage {
             return;
         
         }
-    
+
+        // Check if we have a certificate in local storage
+        //let qrContent = window.localStorage.getItem("MYEUDCC")
+        let qrContent = await get("MYEUDCC")
+        if (qrContent !== null) {
+            // Display the certificate
+            await gotoPage("displaymyhcert", qrContent)
+            return;        
+        }
 
         // We do not have a QR in the local storage
         this.render(html`
