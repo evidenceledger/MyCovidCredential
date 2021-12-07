@@ -64,8 +64,12 @@ export class DisplayQR extends AbstractPage {
         let canvas = document.querySelector("#qrinside div canvas")
         let dataurl = canvas.toDataURL()
 
-        let theFile = this.dataURLtoFile(dataurl, "MyCOVIDcertificate.png")
-        let filesArray = [theFile]
+        try {
+            let theFile = this.dataURLtoFile(dataurl, "MyCOVIDcertificate.png")
+            var filesArray = [theFile]    
+        } catch (error) {
+            alert(error)
+        }
 
         if (navigator.canShare && navigator.canShare({ files: filesArray })) {
             alert("Share is supported")
