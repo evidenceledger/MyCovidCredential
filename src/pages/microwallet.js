@@ -19,7 +19,6 @@ export class MicroWallet extends AbstractPage {
     async enter() {
 
         // We can receive QRs via the URL or scanning with the camera
-        document.body.focus()
 
         // If URL specifies a QR then
         //     check it and store in local storage
@@ -51,7 +50,7 @@ export class MicroWallet extends AbstractPage {
         } catch (error) {
             console.error("Error reading from clipboard:", error)
         }
-        if (qrContent.length > 100 && qrContent.startsWith("HC1:")) {
+        if (qrContent && qrContent.length > 100 && qrContent.startsWith("HC1:")) {
             
             console.log("EUDCC received:", qrContent)
             try {
