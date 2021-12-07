@@ -44,44 +44,58 @@ export class MicroWallet extends AbstractPage {
         
         }
 
-        // Check if we have a QR in the clipboard
-        try {
-            var qrContent = await navigator.clipboard.readText()
-        } catch (error) {
-            console.error("Error reading from clipboard:", error)
-        }
-        if (qrContent && qrContent.length > 100 && qrContent.startsWith("HC1:")) {
-            
-            console.log("EUDCC received:", qrContent)
-            try {
-                await navigator.clipboard.writeText("")
-            } catch (error) {
-                console.error("Error writing to clipboard:", error)
-            }
-    
-            // Ask the user to accept the certificate
-            await gotoPage("AskUserToStoreQR", qrContent)
-            return;
-        
-        }
 
         // Check if we have a certificate in local storage
         //let qrContent = window.localStorage.getItem("MYEUDCC")
-        qrContent = await get("MYEUDCC")
-        if (qrContent !== null) {
+        let qrContent = await get("MYEUDCC")
+        if (qrContent) {
             // Display the certificate
+            console.log("Certificate found in storage")
             await gotoPage("displaymyhcert", qrContent)
             return;        
         }
 
         // We do not have a QR in the local storage
         this.render(html`
-            <div id="hcertFailed" class="w3-panel bkg-fail">
-                <h2>${T("There is no certificate.")}</h2>
+
+            <div class="container center">
+                <div id="hcertFailed" class="w3-panel  padding-16">
+                    <h2>${T("There is no certificate.")}</h2>
+                </div>
+
+                <div class="w3-padding-16">
+        
+                    <button @click=${()=>this.readClip()} class="btn color-secondary hover-color-secondary w3-xlarge w3-round-xlarge">${T("Check clipboard")}</button>
+        
+                </div>
             </div>
+
        `)
         return
     }
+
+    async readClip() {
+
+        // Check if we have a QR in the clipboard
+        try {
+            var qrContent = await navigator.clipboard.readText()
+            console.log("In clipboard:", qrContent)
+        } catch (error) {
+            console.error("Error reading from clipboard:", error)
+            alert(error)            
+        }
+        if (qrContent && qrContent.length > 100 && qrContent.startsWith("HC1:")) {
+            
+            console.log("EUDCC received:", qrContent)
+    
+            // Ask the user to accept the certificate
+            gotoPage("AskUserToStoreQR", qrContent)
+            return;
+        
+        }
+
+    }
+
 }
 
 export class AskUserToStoreQR extends AbstractPage {
