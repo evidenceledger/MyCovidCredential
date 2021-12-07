@@ -1,28 +1,28 @@
 {
   "index.html": {
-    "file": "assets/index.8a29d3f8.js",
+    "file": "assets/index.10889db2.js",
     "src": "index.html",
     "isEntry": true,
     "imports": [
-      "_vendor.f0563d7f.js"
+      "_vendor.421725da.js"
     ],
     "dynamicImports": [
       "all_pages.js",
       "../node_modules/workbox-window/build/workbox-window.prod.es5.mjs"
     ],
     "css": [
-      "assets/index.85b8ad63.css"
+      "assets/index.8ea34325.css"
     ]
   },
-  "_vendor.f0563d7f.js": {
-    "file": "assets/vendor.f0563d7f.js"
+  "_vendor.421725da.js": {
+    "file": "assets/vendor.421725da.js"
   },
   "all_pages.js": {
-    "file": "assets/all_pages.18097e9b.js",
+    "file": "assets/all_pages.f422c8d3.js",
     "src": "all_pages.js",
     "isDynamicEntry": true,
     "imports": [
-      "_vendor.f0563d7f.js",
+      "_vendor.421725da.js",
       "index.html"
     ]
   },

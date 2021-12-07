@@ -6,7 +6,7 @@ import { verifyHcert } from '../components/verifications'
 import ok_image from "../img/ok.png"
 import error_image from "../img/error.png"
 import warning_image from "../img/warning.png"
-import { get, set } from 'idb-keyval';
+import { get, set, del } from 'idb-keyval';
 
 var gotoPage = window.gotoPage
 
@@ -83,14 +83,32 @@ export class DisplayMyHcert extends AbstractPage {
 
         let fullPage = html`
         ${thehtml}
-        <div class="sect-white">
-            <button @click=${()=> gotoPage("DisplayQR")} class="btn color-secondary hover-color-secondary
-            w3-xlarge w3-round-xlarge">
-            ${T("Display QR")}</button>
+
+        <div class="flex-container center">
+            <div class="w3-card w-50 pd-10">
+                <p class="mb-16">Display the QR code so it can be verified.</p>
+                <button @click=${()=> gotoPage("DisplayQR")} class="btn color-secondary hover-color-secondary large round-xlarge" style="margin:auto">${T("Show QR")}</button>
+            </div>
+            <div class="w3-card w-50 pd-10">
+            <p class="mb-16">Delete the QR from this device.</p>
+                <button @click=${()=>this.deleteQRCertificate()} class="btn color-secondary hover-color-secondary large round-xlarge" style="margin:auto">${T("Delete QR")}</button>
+            </div>
+
         </div>
+
         `
         this.render(fullPage)
 
+    }
+
+
+    async deleteQRCertificate() {
+
+        await del("MYEUDCC")
+    
+        // Reload the application with a clean URL
+        window.location.replace(document.location.origin)
+    
     }
 
     renderGeneralError(error) {
@@ -272,6 +290,15 @@ export class AskUserToStoreQR extends AbstractPage {
         // Store it in local storage
         //window.localStorage.setItem("MYEUDCC", this.QRCertificate)
         await set("MYEUDCC", this.QRCertificate)
+    
+        // Reload the application with a clean URL
+        window.location.replace(document.location.origin)
+    
+    }
+
+    async deleteQRCertificate() {
+
+        await del("MYEUDCC")
     
         // Reload the application with a clean URL
         window.location.replace(document.location.origin)

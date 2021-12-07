@@ -60,14 +60,23 @@ export class MicroWallet extends AbstractPage {
 
             <div class="container center">
                 <div id="hcertFailed" class="w3-panel  padding-16">
-                    <h2>${T("There is no certificate.")}</h2>
+                    <h2>${T("There is no certificate")}</h2>
+
+                    But you can import your certificates using one of the methods described below.
                 </div>
 
-                <div class="w3-padding-16">
-        
-                    <button @click=${()=>this.readClip()} class="btn color-secondary hover-color-secondary w3-xlarge w3-round-xlarge">${T("Check clipboard")}</button>
-        
+                <div class="flex-container">
+                    <div class="w3-card w-50 pd-10">
+                        <p class="mb-16">You can use the camera of the mobile to scan a QR code. Press the button below to start the process.</p>
+                        <button onclick='${() => gotoPage("verifier", "AskUserToStoreQR")}' class="btn color-secondary hover-color-secondary large round-xlarge" style="margin:auto">${T("Scan QR")}</button>
+                    </div>
+                    <div class="w3-card w-50 pd-10">
+                    <p class="mb-16">If you have previously copied the QR code to the clipboard, you can press the button below to import the QR into this app.</p>
+                        <button @click=${()=>this.readClip()} class="btn color-secondary hover-color-secondary large round-xlarge" style="margin:auto">${T("Clipboard")}</button>
+                    </div>
+
                 </div>
+
             </div>
 
        `)
@@ -92,6 +101,8 @@ export class MicroWallet extends AbstractPage {
             gotoPage("AskUserToStoreQR", qrContent)
             return;
         
+        } else {
+            alert("Clipboard does not contain a valid QR code")
         }
 
     }
