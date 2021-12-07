@@ -13,6 +13,7 @@ export class DisplayQR extends AbstractPage {
 
         //const myqr = window.localStorage.getItem("MYEUDCC")
         const myqr = await get("MYEUDCC")
+        this.qrContent = myqr
         console.log(myqr)
 
         let qrelement = document.createElement("div");
@@ -32,7 +33,7 @@ export class DisplayQR extends AbstractPage {
 
         <div class="w3-padding-16 center">
 
-            <a @click=${async (e)=>await this.share(e)} id="imagetosave" href="" class="btn color-secondary hover-color-secondary w3-xlarge w3-round-xlarge">${T("Save locally")}</a>
+            <a @click=${async (e)=>await this.clipWrite(e)} id="imagetosave" href="" class="btn color-secondary hover-color-secondary w3-xlarge w3-round-xlarge">${T("Save locally")}</a>
 
         </div>
 
@@ -54,6 +55,9 @@ export class DisplayQR extends AbstractPage {
     async clipWrite(e) {
         e.preventDefault()
 
+        await navigator.clipboard.writeText(this.qrContent)
+        console.log("Copied to clipboard")
+
     }
 
     async share(e) {
@@ -64,7 +68,6 @@ export class DisplayQR extends AbstractPage {
         try {
             var canvas = document.querySelector("#qrinside div canvas")
             var dataurl = canvas.toDataURL()
-            alert("DataURL captured")
         } catch (error) {
             alert(error)
             return
@@ -73,14 +76,12 @@ export class DisplayQR extends AbstractPage {
         try {
             var theFile = this.dataURLtoFile(dataurl, "MyCOVIDcertificate.png")
             var filesArray = [theFile]
-            alert("File created")    
         } catch (error) {
             alert(error)
             return
         }
 
         if (navigator.canShare && navigator.canShare({ files: filesArray })) {
-            alert("Share is supported")
             try {
                 navigator.share({
                     files: filesArray,
@@ -88,7 +89,6 @@ export class DisplayQR extends AbstractPage {
                     text: 'MyCOVIDcertificate',
                 })
                 console.log('Share was successful.')
-                alert('Share was successful.')
             } catch (error) {
                 console.log('Sharing failed', error)
                 alert('Sharing failed', error)
