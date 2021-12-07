@@ -32,7 +32,7 @@ export class DisplayQR extends AbstractPage {
 
         <div class="w3-padding-16 center">
 
-            <a id="imagetosave" href="" class="btn color-secondary hover-color-secondary w3-xlarge w3-round-xlarge" download="MyCertificateCOVID">${T("Save locally")}</a>
+            <a @click=${()=>this.share()} id="imagetosave" href="" class="btn color-secondary hover-color-secondary w3-xlarge w3-round-xlarge">${T("Save locally")}</a>
 
         </div>
 
@@ -41,11 +41,41 @@ export class DisplayQR extends AbstractPage {
 
         this.render(theHtml)
 
+    }
+
+    dataURLtoFile(dataurl, filename) {
+        var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+            bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+        while(n--){
+            u8arr[n] = bstr.charCodeAt(n);
+        }
+        return new File([u8arr], filename, {type:mime});
+    }
+
+    share() {
+
         let canvas = document.querySelector("#qrinside div canvas")
         let dataurl = canvas.toDataURL()
         console.log(dataurl)
-        let imagetosave = document.querySelector("#imagetosave")
-        imagetosave.href = dataurl
+
+        let theFile = this.dataURLtoFile(dataurl, "TheCertificate.png")
+        let filesArray = [theFile]
+
+        if (navigator.canShare && navigator.canShare({ files: filesArray })) {
+        navigator.share({
+            files: filesArray,
+            title: 'MyShareTitle',
+            text: 'MyQRimage',
+        })
+        .then(() => console.log('Share was successful.'))
+        .catch((error) => console.log('Sharing failed', error));
+        } else {
+        console.log(`Your system doesn't support sharing files.`);
+        }
+
+
+
     }
+
 }
 
