@@ -26,12 +26,26 @@ export class DisplayQR extends AbstractPage {
         var qrcode = new QRCode(qrelement, params);
 
         let theHtml = html`
-        <div style="text-align:center; margin-top:100px">
+        <div id="qrinside" style="text-align:center; margin-top:100px">
             ${qrelement}
         </div>
+
+        <div class="w3-padding-16 center">
+
+            <a id="imagetosave" href="" class="btn color-secondary hover-color-secondary w3-xlarge w3-round-xlarge" download>${T("Save locally")}</a>
+
+        </div>
+
+
         `
 
         this.render(theHtml)
+
+        let canvas = document.querySelector("#qrinside div canvas")
+        let dataurl = canvas.toDataURL()
+        console.log(dataurl)
+        let imagetosave = document.querySelector("#imagetosave")
+        imagetosave.href = dataurl
     }
 }
 
