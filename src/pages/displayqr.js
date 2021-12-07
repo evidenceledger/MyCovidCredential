@@ -32,7 +32,7 @@ export class DisplayQR extends AbstractPage {
 
         <div class="w3-padding-16 center">
 
-            <a id="imagetosave" href="" class="btn color-secondary hover-color-secondary w3-xlarge w3-round-xlarge" download>${T("Save locally")}</a>
+            <a id="imagetosave" href="" class="btn color-secondary hover-color-secondary w3-xlarge w3-round-xlarge" download="MyCertificateCOVID">${T("Save locally")}</a>
 
         </div>
 
