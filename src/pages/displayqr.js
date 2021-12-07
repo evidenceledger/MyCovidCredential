@@ -32,13 +32,11 @@ export class DisplayQR extends AbstractPage {
 
         <div class="w3-padding-16 center">
 
-            <a @click=${()=>this.share()} id="imagetosave" href="" class="btn color-secondary hover-color-secondary w3-xlarge w3-round-xlarge">${T("Save locally")}</a>
+            <a @click=${async (e)=>await this.share(e)} id="imagetosave" href="" class="btn color-secondary hover-color-secondary w3-xlarge w3-round-xlarge">${T("Save locally")}</a>
 
         </div>
 
-
         `
-
         this.render(theHtml)
 
     }
@@ -52,28 +50,37 @@ export class DisplayQR extends AbstractPage {
         return new File([u8arr], filename, {type:mime});
     }
 
-    share() {
+
+    pepe(e) {
+        console.log("Hola desde pepe")
+        e.preventDefault()
+    }
+
+    async share(e) {
+        e.preventDefault()
+
+        console.log(e.target)
 
         let canvas = document.querySelector("#qrinside div canvas")
         let dataurl = canvas.toDataURL()
-        console.log(dataurl)
 
-        let theFile = this.dataURLtoFile(dataurl, "TheCertificate.png")
+        let theFile = this.dataURLtoFile(dataurl, "MyCOVIDcertificate.png")
         let filesArray = [theFile]
 
         if (navigator.canShare && navigator.canShare({ files: filesArray })) {
-        navigator.share({
-            files: filesArray,
-            title: 'MyShareTitle',
-            text: 'MyQRimage',
-        })
-        .then(() => console.log('Share was successful.'))
-        .catch((error) => console.log('Sharing failed', error));
+            try {
+                navigator.share({
+                    files: filesArray,
+                    title: 'MyCOVIDcertificate',
+                    text: 'MyCOVIDcertificate',
+                })
+                console.log('Share was successful.')
+            } catch (error) {
+                console.log('Sharing failed', error)
+            }
         } else {
-        console.log(`Your system doesn't support sharing files.`);
+            console.log(`Your system doesn't support sharing files.`);
         }
-
-
 
     }
 
