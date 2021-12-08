@@ -388,10 +388,12 @@ window.addEventListener('load', async (event) => {
             // worker was controlling the page when this version was registered.
             if (event.isUpdate) {
                 console.log("Service worker has been updated.");
-                await performAppUpgrade()
+                gotoPage("swnotify", "upgrade")
+//                await performAppUpgrade()
             } else {
                 console.log("Service worker has been installed for the first time.");
-                await performAppUpgrade()
+                gotoPage("swnotify", "install")
+//                await performAppUpgrade()
             }
         });
 

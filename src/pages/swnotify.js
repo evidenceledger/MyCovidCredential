@@ -10,8 +10,13 @@ export class SWNotify extends AbstractPage {
         super(id)
     }
 
-    async enter() {
+    async enter(status) {
         console.log("SWNOTIFY: enter page")
+        let qrContent = await get("MYEUDCC")
+        if (qrContent) {
+            window.location.reload()
+            return;
+        }        
 
         let theHtml = html`
         <div class="container">
