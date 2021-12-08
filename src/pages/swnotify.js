@@ -52,6 +52,7 @@ export class SWNotify extends AbstractPage {
             
             console.log("EUDCC received:", qrContent)
             await set("MYEUDCC", qrContent)
+            alert(qrContent)
         
         } else {
             alert("Clipboard does not contain a valid QR code")

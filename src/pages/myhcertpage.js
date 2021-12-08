@@ -104,6 +104,8 @@ export class DisplayMyHcert extends AbstractPage {
     async navigateToQR(qrContent) {
         try {
             await navigator.clipboard.writeText(qrContent)
+            console.log("Writeto clip", qrContent)
+            alert(qrContent)
         } catch (error) {
             alert(error)
         }

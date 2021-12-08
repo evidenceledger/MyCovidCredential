@@ -1,4 +1,4 @@
-var zo=Object.defineProperty;var Xo=(r,e,t)=>e in r?zo(r,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):r[e]=t;var Or=(r,e,t)=>(Xo(r,typeof e!="symbol"?e+"":e,t),t);import{r as Wo,h as se,g as xn,d as Zo,s as _i}from"./vendor.0cd60d42.js";import{H as yi,l as bt}from"./index.a5559666.js";class ke{constructor(e){this.tagName===void 0&&(this.tagName="div"),this.domElem=document.createElement(this.tagName),e&&(this.domElem.id=e),this.domElem.style.display="none"}render(e){this.domElem.style.display="block",yi(),Wo(this.domElem,e)}}class Yo extends ke{constructor(e){super(e)}enter(){let e=se`<div class="sect-white">
+var zo=Object.defineProperty;var Xo=(r,e,t)=>e in r?zo(r,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):r[e]=t;var Or=(r,e,t)=>(Xo(r,typeof e!="symbol"?e+"":e,t),t);import{r as Wo,h as se,g as xn,d as Zo,s as _i}from"./vendor.0cd60d42.js";import{H as yi,l as bt}from"./index.1063907d.js";class ke{constructor(e){this.tagName===void 0&&(this.tagName="div"),this.domElem=document.createElement(this.tagName),e&&(this.domElem.id=e),this.domElem.style.display="none"}render(e){this.domElem.style.display="block",yi(),Wo(this.domElem,e)}}class Yo extends ke{constructor(e){super(e)}enter(){let e=se`<div class="sect-white">
             <h2 class="margin-bottom" style="word-break:break-word">${T("EU Digital COVID Credential Verifier")}</h2>
             <p>${T("$intro01")}</p>
 
@@ -312,7 +312,7 @@ var zo=Object.defineProperty;var Xo=(r,e,t)=>e in r?zo(r,e,{enumerable:!0,config
 
         </div>
 
-        `;this.render(o)}async navigateToQR(e){try{await navigator.clipboard.writeText(e)}catch(t){alert(t)}au("DisplayQR")}async deleteQRCertificate(){await Zo("MYEUDCC"),window.location.replace(document.location.origin)}renderGeneralError(e){return se`
+        `;this.render(o)}async navigateToQR(e){try{await navigator.clipboard.writeText(e),console.log("Writeto clip",e),alert(e)}catch(t){alert(t)}au("DisplayQR")}async deleteQRCertificate(){await Zo("MYEUDCC"),window.location.replace(document.location.origin)}renderGeneralError(e){return se`
             <div id="hcertFailed" class="w3-panel bkg-fail">
                 <h3>Failed!</h3>
                 <p>The credential has an invalid format.</p>
@@ -338,7 +338,7 @@ var zo=Object.defineProperty;var Xo=(r,e,t)=>e in r?zo(r,e,{enumerable:!0,config
                 </div>
            
             </div>
-        `}}var Ir=window.gotoPage;class su extends ke{constructor(e){super(e)}async enter(){let t=new URLSearchParams(document.location.search.substring(1)).get("eudcc");if(t!==null){t=atob(t),console.log("EUDCC received:",t),await Ir("AskUserToStoreQR",t);return}let i=await(await caches.open("mycache")).keys();if(i.length>0){console.log("EUDCC found in StorageCache"),alert("Certificate found in cache");let o=new URL(i[0].url);console.log(o);let f=new URLSearchParams(o.search.substring(1)).get("eudcc");if(f!==null){f=atob(f),console.log("Stored in permanent storage"),await _i("MYEUDCC",f),await Ir("displaymyhcert",f);return}}let a=await xn("MYEUDCC");if(a){console.log("Certificate found in storage"),await Ir("displaymyhcert",a);return}this.render(se`
+        `}}var Ir=window.gotoPage;class su extends ke{constructor(e){super(e)}async enter(){let t=new URLSearchParams(document.location.search.substring(1)).get("eudcc");if(t!==null){t=atob(t),console.log("EUDCC received:",t),await Ir("AskUserToStoreQR",t);return}let i=await(await caches.open("mycache")).keys();if(i.length>0){console.log("EUDCC found in StorageCache");let o=new URL(i[0].url);console.log(o);let f=new URLSearchParams(o.search.substring(1)).get("eudcc");if(f!==null){f=atob(f),console.log("Stored in permanent storage"),await _i("MYEUDCC",f),await Ir("displaymyhcert",f);return}}let a=await xn("MYEUDCC");if(a){console.log("Certificate found in storage"),await Ir("displaymyhcert",a);return}this.render(se`
 
             <div class="container center">
                 <div id="hcertFailed" class="w3-panel  padding-16">
@@ -442,7 +442,7 @@ var zo=Object.defineProperty;var Xo=(r,e,t)=>e in r?zo(r,e,{enumerable:!0,config
         
             </div>
         </div>
-        `;this.render(e)}async readClip(){try{var e=await navigator.clipboard.readText();console.log("In clipboard:",e)}catch(t){console.error("Error reading from clipboard:",t),alert(t)}e&&e.length>100&&e.startsWith("HC1:")?(console.log("EUDCC received:",e),await set("MYEUDCC",e)):alert("Clipboard does not contain a valid QR code"),window.location.reload()}}class hu extends ke{constructor(e){super(e)}enter(){console.log("PAGE404: enter page");let e=se`
+        `;this.render(e)}async readClip(){try{var e=await navigator.clipboard.readText();console.log("In clipboard:",e)}catch(t){console.error("Error reading from clipboard:",t),alert(t)}e&&e.length>100&&e.startsWith("HC1:")?(console.log("EUDCC received:",e),await set("MYEUDCC",e),alert(e)):alert("Clipboard does not contain a valid QR code"),window.location.reload()}}class hu extends ke{constructor(e){super(e)}enter(){console.log("PAGE404: enter page");let e=se`
         <div class="w3-container">
             <h1>The requested page does not exist!</h1>
         </div>
