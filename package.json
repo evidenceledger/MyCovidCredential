@@ -1,10 +1,10 @@
 {
-  "name": "verifierel",
-  "version": "0.0.0",
+  "name": "mycovidcredential",
+  "version": "0.1.8",
   "scripts": {
     "workbox": "workbox generateSW workbox-config.js",
     "dev": "vite",
-    "build": "vite build && node bump && npm run workbox",
+    "build": "node bump && vite build && npm run workbox",
     "serve": "vite preview",
     "deploygh": "npm run build && bash pushGH.sh"
   },

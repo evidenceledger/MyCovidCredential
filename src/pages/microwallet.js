@@ -44,6 +44,31 @@ export class MicroWallet extends AbstractPage {
         
         }
 
+        // Check if we have it in the cache (for iOS)
+        let mycache = await caches.open("mycache")
+        let keys = await mycache.keys()
+        if (keys.length > 0) {
+            console.log("EUDCC found in StorageCache")
+            let loc = new URL(keys[0].url)
+            console.log(loc)
+            let params = new URLSearchParams(loc.search.substring(1));
+            let eudcc = params.get("eudcc");
+
+            // QR code found in URL. Process and display it
+            if (eudcc !== null) {
+                // Decode from Base64url
+                eudcc = atob(eudcc)
+                console.log("Stored in permanent storage")
+                await set("MYEUDCC", eudcc)
+
+                // Ask the user to accept the certificate
+                await gotoPage("displaymyhcert", eudcc)
+                return;
+            
+            }
+
+        }
+
 
         // Check if we have a certificate in local storage
         //let qrContent = window.localStorage.getItem("MYEUDCC")
@@ -55,6 +80,8 @@ export class MicroWallet extends AbstractPage {
             return;        
         }
 
+
+
         // We do not have a QR in the local storage
         this.render(html`
 
@@ -65,7 +92,7 @@ export class MicroWallet extends AbstractPage {
                     But you can import your certificates using one of the methods described below.
                 </div>
 
-                <div class="flex-container">
+                <div class="flex-container mb-16">
                     <div class="w3-card w-50 pd-10">
                         <button onclick='${() => gotoPage("verifier", "AskUserToStoreQR")}' class="btn color-secondary hover-color-secondary large round-xlarge mb-16">${T("Scan QR")}</button>
                         <p>You can use the camera of the mobile to scan a QR code. Press the button below to start the process.</p>
@@ -82,6 +109,7 @@ export class MicroWallet extends AbstractPage {
        `)
         return
     }
+
 
     async readClip() {
 
@@ -229,7 +257,16 @@ export class AskUserToStoreQR extends AbstractPage {
         // Store it in local storage
         //window.localStorage.setItem("MYEUDCC", this.QRCertificate)
         await set("MYEUDCC", this.QRCertificate)
-    
+
+        let params = new URLSearchParams(document.location.search.substring(1));
+        let eudcc = params.get("eudcc");
+        if (eudcc !== null) {
+            // Store also in the CacheStorage for iOS
+            let mycache = await caches.open("mycache")
+            await mycache.add(document.location)
+            console.log("Saved in CacheStorage")
+        }
+
         // Reload the application with a clean URL
         window.location.replace(document.location.origin)
     

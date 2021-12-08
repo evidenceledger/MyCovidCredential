@@ -14,7 +14,7 @@ export default defineConfig(({ command, mode }) => {
             outDir: "../docs",
             emptyOutDir: true,
             assetsInlineLimit: 20000,
-            manifest: true
+            chunkSizeWarningLimit: 1000,
         }
 
     }
