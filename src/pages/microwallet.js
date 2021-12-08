@@ -24,7 +24,6 @@ export class MicroWallet extends AbstractPage {
         ).matches
         if (installed) {
             window.inStandalone = true
-            alert("App running in standalone mode")
         }
 
         // We can receive QRs via the URL or scanning with the camera
@@ -132,7 +131,7 @@ export class MicroWallet extends AbstractPage {
             alert(error)            
         }
         if (qrContent &&
-            (typeof myVar === 'string' || myVar instanceof String) &&
+            (typeof qrContent === 'string' || qrContent instanceof String) &&
             qrContent.length > 100 && qrContent.startsWith("HC1:")
             ) {
             
