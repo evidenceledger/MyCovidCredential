@@ -1,4 +1,4 @@
-var zo=Object.defineProperty;var Xo=(r,e,t)=>e in r?zo(r,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):r[e]=t;var Or=(r,e,t)=>(Xo(r,typeof e!="symbol"?e+"":e,t),t);import{r as Wo,h as se,g as xn,d as Zo,s as _n}from"./vendor.0cd60d42.js";import{H as yi,l as bt}from"./index.a8a90060.js";class ke{constructor(e){this.tagName===void 0&&(this.tagName="div"),this.domElem=document.createElement(this.tagName),e&&(this.domElem.id=e),this.domElem.style.display="none"}render(e){this.domElem.style.display="block",yi(),Wo(this.domElem,e)}}class Yo extends ke{constructor(e){super(e)}enter(){let e=se`<div class="sect-white">
+var zo=Object.defineProperty;var Xo=(r,e,t)=>e in r?zo(r,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):r[e]=t;var Or=(r,e,t)=>(Xo(r,typeof e!="symbol"?e+"":e,t),t);import{r as Wo,h as se,g as xn,d as Zo,s as _n}from"./vendor.0cd60d42.js";import{H as yi,l as bt}from"./index.994aba57.js";class ke{constructor(e){this.tagName===void 0&&(this.tagName="div"),this.domElem=document.createElement(this.tagName),e&&(this.domElem.id=e),this.domElem.style.display="none"}render(e){this.domElem.style.display="block",yi(),Wo(this.domElem,e)}}class Yo extends ke{constructor(e){super(e)}enter(){let e=se`<div class="sect-white">
             <h2 class="margin-bottom" style="word-break:break-word">${T("EU Digital COVID Credential Verifier")}</h2>
             <p>${T("$intro01")}</p>
 
@@ -421,7 +421,7 @@ var zo=Object.defineProperty;var Xo=(r,e,t)=>e in r?zo(r,e,{enumerable:!0,config
             </ul>
 
         </div>
-        `;this.render(e)}async setCamera(e){console.log("Selecting camera",e),window.selectedCamera=e,localStorage.setItem("selectedCamera",e),window.history.back(),window.initialHeader()}async checkCamera(){let e,t={audio:!1,video:{width:{ideal:1080,max:1920},facingMode:"environment"}};try{e=await navigator.mediaDevices.getUserMedia(t);let i=e.getVideoTracks()[0].getSettings();return console.log(i),`${i.width}x${i.height}`}catch{}finally{e!==void 0&&e.getVideoTracks().forEach(n=>{n.stop()})}}}class uu extends ke{constructor(e){super(e)}enter(){console.log("SWNOTIFY: enter page");let e=se`
+        `;this.render(e)}async setCamera(e){console.log("Selecting camera",e),window.selectedCamera=e,localStorage.setItem("selectedCamera",e),window.history.back(),window.initialHeader()}async checkCamera(){let e,t={audio:!1,video:{width:{ideal:1080,max:1920},facingMode:"environment"}};try{e=await navigator.mediaDevices.getUserMedia(t);let i=e.getVideoTracks()[0].getSettings();return console.log(i),`${i.width}x${i.height}`}catch{}finally{e!==void 0&&e.getVideoTracks().forEach(n=>{n.stop()})}}}class uu extends ke{constructor(e){super(e)}async enter(){console.log("SWNOTIFY: enter page");let e=se`
         <div class="container">
             <div class="w3-card-4 w3-center" style="margin-top:100px;">
         
@@ -436,13 +436,13 @@ var zo=Object.defineProperty;var Xo=(r,e,t)=>e in r?zo(r,e,{enumerable:!0,config
         
                 <div class="w3-padding-16">
         
-                    <button @click=${()=>this.readClip()} class="btn color-secondary hover-color-secondary w3-xlarge w3-round-xlarge">${T("Accept")}</button>
+                    <button @click=${async()=>await this.readClip()} class="btn color-secondary hover-color-secondary w3-xlarge w3-round-xlarge">${T("Accept")}</button>
         
                 </div>
         
             </div>
         </div>
-        `;this.render(e)}async readClip(){try{var e=await navigator.clipboard.readText();console.log("In clipboard:",e)}catch(t){console.error("Error reading from clipboard:",t),alert(t)}e&&e.length>100&&e.startsWith("HC1:")?(console.log("EUDCC received:",e),await _n("MYEUDCC",e)):alert("Clipboard does not contain a valid QR code"),window.location.reload()}}class hu extends ke{constructor(e){super(e)}enter(){console.log("PAGE404: enter page");let e=se`
+        `;this.render(e)}async readClip(){try{var e=await navigator.clipboard.readText();console.log("In clipboard:",e)}catch(t){console.error("Error reading from clipboard:",t),alert(t)}e&&e.length>100&&e.startsWith("HC1:")&&(console.log("EUDCC received:",e),await _n("MYEUDCC",e)),window.location.reload()}}class hu extends ke{constructor(e){super(e)}enter(){console.log("PAGE404: enter page");let e=se`
         <div class="w3-container">
             <h1>The requested page does not exist!</h1>
         </div>

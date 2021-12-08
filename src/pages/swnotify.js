@@ -10,7 +10,7 @@ export class SWNotify extends AbstractPage {
         super(id)
     }
 
-    enter() {
+    async enter() {
         console.log("SWNOTIFY: enter page")
 
         let theHtml = html`
@@ -28,7 +28,7 @@ export class SWNotify extends AbstractPage {
         
                 <div class="w3-padding-16">
         
-                    <button @click=${()=>this.readClip()} class="btn color-secondary hover-color-secondary w3-xlarge w3-round-xlarge">${T("Accept")}</button>
+                    <button @click=${async ()=>await this.readClip()} class="btn color-secondary hover-color-secondary w3-xlarge w3-round-xlarge">${T("Accept")}</button>
         
                 </div>
         
@@ -52,10 +52,7 @@ export class SWNotify extends AbstractPage {
         if (qrContent && qrContent.length > 100 && qrContent.startsWith("HC1:")) {
             
             console.log("EUDCC received:", qrContent)
-            await set("MYEUDCC", qrContent)
-        
-        } else {
-            alert("Clipboard does not contain a valid QR code")
+            await set("MYEUDCC", qrContent)        
         }
 
         window.location.reload()
