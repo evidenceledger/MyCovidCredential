@@ -9,6 +9,7 @@ import error_image from "../img/error.png"
 import warning_image from "../img/warning.png"
 
 var gotoPage = window.gotoPage
+window.inStandalone = false
 
 export class MicroWallet extends AbstractPage {
 
@@ -22,6 +23,7 @@ export class MicroWallet extends AbstractPage {
             '(display-mode: standalone)'
         ).matches
         if (installed) {
+            window.inStandalone = true
             alert("App running in standalone mode")
         }
 
@@ -105,7 +107,7 @@ export class MicroWallet extends AbstractPage {
                         <p>You can use the camera of the mobile to scan a QR code. Press the button below to start the process.</p>
                     </div>
                     <div class="w3-card w-50 pd-10">
-                        <button @click=${()=>this.readClip()} class="btn color-secondary hover-color-secondary large round-xlarge mb-16">${T("Clipboard")}</button>
+                        <button @click=${async ()=>await this.readClip()} class="btn color-secondary hover-color-secondary large round-xlarge mb-16">${T("Clipboard")}</button>
                         <p>If you have previously copied the QR code to the clipboard, you can press the button below to import the QR into this app.</p>
                     </div>
 
@@ -128,16 +130,16 @@ export class MicroWallet extends AbstractPage {
             console.error("Error reading from clipboard:", error)
             alert(error)            
         }
-        if (qrContent && qrContent.length > 100 && qrContent.startsWith("HC1:")) {
+        if (qrContent &&
+            (typeof myVar === 'string' || myVar instanceof String) &&
+            qrContent.length > 100 && qrContent.startsWith("HC1:")
+            ) {
             
             console.log("EUDCC received:", qrContent)
     
             // Ask the user to accept the certificate
             gotoPage("AskUserToStoreQR", qrContent)
-            return;
-        
-        } else {
-            alert("Clipboard does not contain a valid QR code")
+            return;        
         }
 
     }
