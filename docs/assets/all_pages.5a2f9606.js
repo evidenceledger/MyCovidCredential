@@ -1,4 +1,4 @@
-var zo=Object.defineProperty;var Xo=(r,e,t)=>e in r?zo(r,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):r[e]=t;var Or=(r,e,t)=>(Xo(r,typeof e!="symbol"?e+"":e,t),t);import{r as Wo,h as se,g as xn,d as Zo,s as _n}from"./vendor.0cd60d42.js";import{H as yi,l as bt}from"./index.f9afef5a.js";class ke{constructor(e){this.tagName===void 0&&(this.tagName="div"),this.domElem=document.createElement(this.tagName),e&&(this.domElem.id=e),this.domElem.style.display="none"}render(e){this.domElem.style.display="block",yi(),Wo(this.domElem,e)}}class Yo extends ke{constructor(e){super(e)}enter(){let e=se`<div class="sect-white">
+var zo=Object.defineProperty;var Xo=(r,e,t)=>e in r?zo(r,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):r[e]=t;var Or=(r,e,t)=>(Xo(r,typeof e!="symbol"?e+"":e,t),t);import{r as Wo,h as se,g as xn,d as Zo,s as _n}from"./vendor.0cd60d42.js";import{H as yi,l as bt}from"./index.362854e9.js";class ke{constructor(e){this.tagName===void 0&&(this.tagName="div"),this.domElem=document.createElement(this.tagName),e&&(this.domElem.id=e),this.domElem.style.display="none"}render(e){this.domElem.style.display="block",yi(),Wo(this.domElem,e)}}class Yo extends ke{constructor(e){super(e)}enter(){let e=se`<div class="sect-white">
             <h2 class="margin-bottom" style="word-break:break-word">${T("EU Digital COVID Credential Verifier")}</h2>
             <p>${T("$intro01")}</p>
 
@@ -353,7 +353,7 @@ var zo=Object.defineProperty;var Xo=(r,e,t)=>e in r?zo(r,e,{enumerable:!0,config
                         <p>You can use the camera of the mobile to scan a QR code. Press the button below to start the process.</p>
                     </div>
                     <div class="w3-card w-50 pd-10">
-                        <button @click=${async()=>await this.readClip()} class="btn color-secondary hover-color-secondary large round-xlarge mb-16">${T("Clipboard")}</button>
+                        <button @click=${async s=>await this.readClip(s)} class="btn color-secondary hover-color-secondary large round-xlarge mb-16">${T("Clipboard")}</button>
                         <p>If you have previously copied the QR code to the clipboard, you can press the button below to import the QR into this app.</p>
                     </div>
 
@@ -361,7 +361,7 @@ var zo=Object.defineProperty;var Xo=(r,e,t)=>e in r?zo(r,e,{enumerable:!0,config
 
             </div>
 
-       `)}async readClip(){try{var e=await navigator.clipboard.readText();console.log("In clipboard:",e)}catch(t){console.error("Error reading from clipboard:",t),alert(t)}if(e&&(typeof myVar=="string"||myVar instanceof String)&&e.length>100&&e.startsWith("HC1:")){console.log("EUDCC received:",e),Sr("AskUserToStoreQR",e);return}}}class fu extends ke{constructor(e){super(e)}async enter(e){let t=await this.verifyQRCertificate(e);if(t.result=="ERROR"){this.render(se`
+       `)}async readClip(e){e.preventDefault();try{var t=await navigator.clipboard.readText();console.log("In clipboard:",t)}catch(n){console.error("Error reading from clipboard:",n),alert(n)}if(t&&(typeof myVar=="string"||myVar instanceof String)&&t.length>100&&t.startsWith("HC1:")){console.log("EUDCC received:",t),Sr("AskUserToStoreQR",t);return}}}class fu extends ke{constructor(e){super(e)}async enter(e){let t=await this.verifyQRCertificate(e);if(t.result=="ERROR"){this.render(se`
             <div class="container center">
                 <div id="hcertFailed" class="w3-panel bkg-error padding-16">
                     <h3>Failed!</h3>

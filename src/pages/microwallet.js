@@ -107,7 +107,7 @@ export class MicroWallet extends AbstractPage {
                         <p>You can use the camera of the mobile to scan a QR code. Press the button below to start the process.</p>
                     </div>
                     <div class="w3-card w-50 pd-10">
-                        <button @click=${async ()=>await this.readClip()} class="btn color-secondary hover-color-secondary large round-xlarge mb-16">${T("Clipboard")}</button>
+                        <button @click=${async (e)=>await this.readClip(e)} class="btn color-secondary hover-color-secondary large round-xlarge mb-16">${T("Clipboard")}</button>
                         <p>If you have previously copied the QR code to the clipboard, you can press the button below to import the QR into this app.</p>
                     </div>
 
@@ -120,7 +120,8 @@ export class MicroWallet extends AbstractPage {
     }
 
 
-    async readClip() {
+    async readClip(e) {
+        e.preventDefault()
 
         // Check if we have a QR in the clipboard
         try {
