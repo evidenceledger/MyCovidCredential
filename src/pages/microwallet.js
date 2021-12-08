@@ -51,7 +51,6 @@ export class MicroWallet extends AbstractPage {
         let keys = await mycache.keys()
         if (keys.length > 0) {
             console.log("EUDCC found in StorageCache")
-            alert("Found in StorageCache")
             let loc = new URL(keys[0].url)
             console.log(loc)
             let params = new URLSearchParams(loc.search.substring(1));
