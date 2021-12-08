@@ -22,7 +22,6 @@ export class SWNotify extends AbstractPage {
                 </header>
         
                 <div class="w3-container w3-padding-16">
-                    <p>${T("There is a new version of the application and it has already been updated.")}</p>
                     <p>${T("Please click Accept to refresh the page.")}</p>
                 </div>
         
@@ -41,18 +40,25 @@ export class SWNotify extends AbstractPage {
 
     async readClip() {
 
-        // Check if we have a QR in the clipboard
-        try {
-            var qrContent = await navigator.clipboard.readText()
-            console.log("In clipboard:", qrContent)
-        } catch (error) {
-            console.error("Error reading from clipboard:", error)
-            alert(error)            
-        }
-        if (qrContent && qrContent.length > 100 && qrContent.startsWith("HC1:")) {
-            
-            console.log("EUDCC received:", qrContent)
-            await set("MYEUDCC", qrContent)        
+        if (window.inStandalone) {
+
+            // Check if we have a QR in the clipboard
+            try {
+                var qrContent = await navigator.clipboard.readText()
+                console.log("In clipboard:", qrContent)
+            } catch (error) {
+                console.error("Error reading from clipboard:", error)
+                alert(error)            
+            }
+            if (qrContent &&
+                (typeof qrContent === 'string' || qrContent instanceof String) &&
+                qrContent.length > 100 && qrContent.startsWith("HC1:")
+                ) {
+                
+                console.log("EUDCC received:", qrContent)
+                await set("MYEUDCC", qrContent)        
+            }
+
         }
 
         window.location.reload()

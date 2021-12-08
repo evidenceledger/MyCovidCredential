@@ -28,12 +28,6 @@ export class MicroWallet extends AbstractPage {
 
         // We can receive QRs via the URL or scanning with the camera
 
-        // If URL specifies a QR then
-        //     check it and store in local storage
-        //     clean the URL and reload the app
-        // If URL is clean (initially or after reloading)
-        //     retrieve the QR from local storage and display it
-
         // Check if we received a certificate via the URL
         // The URL should be: https://host:port/?eudcc=QRCodeInBase64Encoding
         // The QRCodeInBase64Encoding is the long string representing each QR code
@@ -77,7 +71,6 @@ export class MicroWallet extends AbstractPage {
 
         }
 
-
         // Check if we have a certificate in local storage
         //let qrContent = window.localStorage.getItem("MYEUDCC")
         let qrContent = await get("MYEUDCC")
@@ -87,8 +80,6 @@ export class MicroWallet extends AbstractPage {
             await gotoPage("displaymyhcert", qrContent)
             return;        
         }
-
-
 
         // We do not have a QR in the local storage
         this.render(html`
