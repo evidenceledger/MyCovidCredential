@@ -308,6 +308,7 @@ export class AskUserToStoreQR extends AbstractPage {
     async deleteQRCertificate() {
 
         await del("MYEUDCC")
+        await caches.delete("mycache")
     
         // Reload the application with a clean URL
         window.location.replace(document.location.origin)
