@@ -392,7 +392,7 @@ window.addEventListener('load', async (event) => {
 //                await performAppUpgrade()
             } else {
                 console.log("Service worker has been installed for the first time.");
-//                gotoPage("swnotify", "installed")
+                gotoPage("swnotify", "installed")
 //                await performAppUpgrade()
             }
         });
