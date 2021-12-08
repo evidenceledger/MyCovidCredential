@@ -1,4 +1,4 @@
-var zo=Object.defineProperty;var Xo=(r,e,t)=>e in r?zo(r,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):r[e]=t;var Or=(r,e,t)=>(Xo(r,typeof e!="symbol"?e+"":e,t),t);import{r as Wo,h as se,g as xn,d as Zo,s as _i}from"./vendor.0cd60d42.js";import{H as yi,l as bt}from"./index.a52fa093.js";class ke{constructor(e){this.tagName===void 0&&(this.tagName="div"),this.domElem=document.createElement(this.tagName),e&&(this.domElem.id=e),this.domElem.style.display="none"}render(e){this.domElem.style.display="block",yi(),Wo(this.domElem,e)}}class Yo extends ke{constructor(e){super(e)}enter(){let e=se`<div class="sect-white">
+var zo=Object.defineProperty;var Xo=(r,e,t)=>e in r?zo(r,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):r[e]=t;var Or=(r,e,t)=>(Xo(r,typeof e!="symbol"?e+"":e,t),t);import{r as Wo,h as se,g as xn,d as Zo,s as _i}from"./vendor.0cd60d42.js";import{H as yi,l as bt}from"./index.93780086.js";class ke{constructor(e){this.tagName===void 0&&(this.tagName="div"),this.domElem=document.createElement(this.tagName),e&&(this.domElem.id=e),this.domElem.style.display="none"}render(e){this.domElem.style.display="block",yi(),Wo(this.domElem,e)}}class Yo extends ke{constructor(e){super(e)}enter(){let e=se`<div class="sect-white">
             <h2 class="margin-bottom" style="word-break:break-word">${T("EU Digital COVID Credential Verifier")}</h2>
             <p>${T("$intro01")}</p>
 
@@ -302,7 +302,7 @@ var zo=Object.defineProperty;var Xo=(r,e,t)=>e in r?zo(r,e,{enumerable:!0,config
 
         <div class="flex-container center">
             <div class="w3-card w-50 pd-10">
-                <button @click=${()=>this.navigateToQR()} class="btn color-secondary hover-color-secondary large round-xlarge mb-16">${T("Show QR")}</button>
+                <button @click=${()=>this.navigateToQR(e)} class="btn color-secondary hover-color-secondary large round-xlarge mb-16">${T("Show QR")}</button>
                 <p>Display the QR code so it can be verified.</p>
             </div>
             <div class="w3-card w-50 pd-10">
@@ -312,7 +312,7 @@ var zo=Object.defineProperty;var Xo=(r,e,t)=>e in r?zo(r,e,{enumerable:!0,config
 
         </div>
 
-        `;this.render(o)}async navigateToQR(){try{await navigator.clipboard.writeText(qrContent)}catch(e){alert(e)}au("DisplayQR")}async deleteQRCertificate(){await Zo("MYEUDCC"),window.location.replace(document.location.origin)}renderGeneralError(e){return se`
+        `;this.render(o)}async navigateToQR(e){try{await navigator.clipboard.writeText(e)}catch(t){alert(t)}au("DisplayQR")}async deleteQRCertificate(){await Zo("MYEUDCC"),window.location.replace(document.location.origin)}renderGeneralError(e){return se`
             <div id="hcertFailed" class="w3-panel bkg-fail">
                 <h3>Failed!</h3>
                 <p>The credential has an invalid format.</p>
