@@ -263,7 +263,6 @@ export class AskUserToStoreQR extends AbstractPage {
         let eudcc = params.get("eudcc");
         if (eudcc !== null) {
             // Store also in the CacheStorage for iOS
-            alert("Saving certificate in cache")
             let mycache = await caches.open("mycache")
             await mycache.add(document.location)
             console.log("Saved in CacheStorage")

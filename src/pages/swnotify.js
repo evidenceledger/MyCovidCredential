@@ -27,7 +27,7 @@ export class SWNotify extends AbstractPage {
         
                 <div class="w3-padding-16">
         
-                    <button @click=${()=>window.location.reload()} class="btn color-secondary hover-color-secondary w3-xlarge w3-round-xlarge">${T("Accept")}</button>
+                    <button @click=${()=>this.readClip()} class="btn color-secondary hover-color-secondary w3-xlarge w3-round-xlarge">${T("Accept")}</button>
         
                 </div>
         
@@ -37,5 +37,29 @@ export class SWNotify extends AbstractPage {
 
         this.render(theHtml)
     }
+
+    async readClip() {
+
+        // Check if we have a QR in the clipboard
+        try {
+            var qrContent = await navigator.clipboard.readText()
+            console.log("In clipboard:", qrContent)
+        } catch (error) {
+            console.error("Error reading from clipboard:", error)
+            alert(error)            
+        }
+        if (qrContent && qrContent.length > 100 && qrContent.startsWith("HC1:")) {
+            
+            console.log("EUDCC received:", qrContent)
+            await set("MYEUDCC", qrContent)
+            return;
+        
+        } else {
+            alert("Clipboard does not contain a valid QR code")
+        }
+
+        window.location.reload()
+    }
+
 }
 
