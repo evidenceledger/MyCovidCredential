@@ -49,6 +49,7 @@ export class MicroWallet extends AbstractPage {
         let keys = await mycache.keys()
         if (keys.length > 0) {
             console.log("EUDCC found in StorageCache")
+            alert("Certificate found in cache")
             let loc = new URL(keys[0].url)
             console.log(loc)
             let params = new URLSearchParams(loc.search.substring(1));
@@ -262,6 +263,7 @@ export class AskUserToStoreQR extends AbstractPage {
         let eudcc = params.get("eudcc");
         if (eudcc !== null) {
             // Store also in the CacheStorage for iOS
+            alert("Saving certificate in cache")
             let mycache = await caches.open("mycache")
             await mycache.add(document.location)
             console.log("Saved in CacheStorage")
