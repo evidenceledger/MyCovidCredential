@@ -18,6 +18,13 @@ export class MicroWallet extends AbstractPage {
 
     async enter() {
 
+        let installed = window.matchMedia(
+            '(display-mode: standalone)'
+        ).matches
+        if (installed) {
+            alert("App running in standalone mode")
+        }
+
         // We can receive QRs via the URL or scanning with the camera
 
         // If URL specifies a QR then
