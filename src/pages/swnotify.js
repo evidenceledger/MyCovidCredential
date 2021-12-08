@@ -1,5 +1,6 @@
 import { AbstractPage } from './abstractpage'
 import { html } from 'uhtml'
+import { set } from 'idb-keyval';
 
 var gotoPage = window.gotoPage
 
@@ -39,7 +40,6 @@ export class SWNotify extends AbstractPage {
     }
 
     async readClip() {
-        alert("Reading clipboard")
 
         // Check if we have a QR in the clipboard
         try {
@@ -53,7 +53,6 @@ export class SWNotify extends AbstractPage {
             
             console.log("EUDCC received:", qrContent)
             await set("MYEUDCC", qrContent)
-            alert(qrContent)
         
         } else {
             alert("Clipboard does not contain a valid QR code")
