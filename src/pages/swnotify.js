@@ -12,19 +12,19 @@ export class SWNotify extends AbstractPage {
 
     async enter(status) {
         console.log("SWNOTIFY: enter page")
-        let qrContent = await get("MYEUDCC")
-        if (qrContent) {
-            window.location.reload()
-            window.goHome()
-            return;
-        }        
+        // let qrContent = await get("MYEUDCC")
+        // if (qrContent) {
+        //     window.location.reload()
+        //     window.goHome()
+        //     return;
+        // }        
 
         let theHtml = html`
         <div class="container">
             <div class="w3-card-4 w3-center" style="margin-top:100px;">
         
                 <header class="w3-container color-primary" style="padding:10px">
-                    <h1>${T("Application updated")}</h1>
+                    <h1>${T("Application updated")}: ${status}</h1>
                 </header>
         
                 <div class="w3-container w3-padding-16">
