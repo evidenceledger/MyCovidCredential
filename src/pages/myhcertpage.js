@@ -30,7 +30,11 @@ export class DisplayMyHcert extends AbstractPage {
             return
         }
 
-//        await navigator.clipboard.writeText(qrContent)
+        try {
+            await navigator.clipboard.writeText(qrContent)
+        } catch (error) {
+            alert(error)
+        }
 
         let hcert = undefined
         let verified = false
