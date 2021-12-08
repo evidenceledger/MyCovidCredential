@@ -1,4 +1,4 @@
-var zo=Object.defineProperty;var Xo=(r,e,t)=>e in r?zo(r,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):r[e]=t;var Or=(r,e,t)=>(Xo(r,typeof e!="symbol"?e+"":e,t),t);import{r as Wo,h as se,g as xn,d as Zo,s as _n}from"./vendor.0cd60d42.js";import{H as yi,l as bt}from"./index.7854c774.js";class ke{constructor(e){this.tagName===void 0&&(this.tagName="div"),this.domElem=document.createElement(this.tagName),e&&(this.domElem.id=e),this.domElem.style.display="none"}render(e){this.domElem.style.display="block",yi(),Wo(this.domElem,e)}}class Yo extends ke{constructor(e){super(e)}enter(){let e=se`<div class="sect-white">
+var zo=Object.defineProperty;var Xo=(r,e,t)=>e in r?zo(r,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):r[e]=t;var Or=(r,e,t)=>(Xo(r,typeof e!="symbol"?e+"":e,t),t);import{r as Wo,h as se,g as xn,d as Zo,s as _n}from"./vendor.0cd60d42.js";import{H as yi,l as bt}from"./index.b1e60fdf.js";class ke{constructor(e){this.tagName===void 0&&(this.tagName="div"),this.domElem=document.createElement(this.tagName),e&&(this.domElem.id=e),this.domElem.style.display="none"}render(e){this.domElem.style.display="block",yi(),Wo(this.domElem,e)}}class Yo extends ke{constructor(e){super(e)}enter(){let e=se`<div class="sect-white">
             <h2 class="margin-bottom" style="word-break:break-word">${T("EU Digital COVID Credential Verifier")}</h2>
             <p>${T("$intro01")}</p>
 
@@ -312,7 +312,7 @@ var zo=Object.defineProperty;var Xo=(r,e,t)=>e in r?zo(r,e,{enumerable:!0,config
 
         </div>
 
-        `;this.render(o)}async navigateToQR(e){try{await navigator.clipboard.writeText(e),console.log("Writeto clip",e)}catch(t){alert(t)}au("DisplayQR")}async deleteQRCertificate(){await Zo("MYEUDCC"),window.location.replace(document.location.origin)}renderGeneralError(e){return se`
+        `;this.render(o)}async navigateToQR(e){try{await navigator.clipboard.writeText(e),console.log("Writeto clip",e)}catch(t){alert(t)}au("DisplayQR")}async deleteQRCertificate(){await Zo("MYEUDCC"),await caches.delete("mycache"),window.location.replace(document.location.origin)}renderGeneralError(e){return se`
             <div id="hcertFailed" class="w3-panel bkg-fail">
                 <h3>Failed!</h3>
                 <p>The credential has an invalid format.</p>

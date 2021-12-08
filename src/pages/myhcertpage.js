@@ -114,6 +114,7 @@ export class DisplayMyHcert extends AbstractPage {
     async deleteQRCertificate() {
 
         await del("MYEUDCC")
+        await caches.delete("mycache")
     
         // Reload the application with a clean URL
         window.location.replace(document.location.origin)
@@ -299,16 +300,6 @@ export class AskUserToStoreQR extends AbstractPage {
         // Store it in local storage
         //window.localStorage.setItem("MYEUDCC", this.QRCertificate)
         await set("MYEUDCC", this.QRCertificate)
-    
-        // Reload the application with a clean URL
-        window.location.replace(document.location.origin)
-    
-    }
-
-    async deleteQRCertificate() {
-
-        await del("MYEUDCC")
-        await caches.delete("mycache")
     
         // Reload the application with a clean URL
         window.location.replace(document.location.origin)
