@@ -39,6 +39,7 @@ export class SWNotify extends AbstractPage {
     }
 
     async readClip() {
+        alert("Readin clipboard")
 
         // Check if we have a QR in the clipboard
         try {
