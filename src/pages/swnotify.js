@@ -15,6 +15,7 @@ export class SWNotify extends AbstractPage {
         let qrContent = await get("MYEUDCC")
         if (qrContent) {
             window.location.reload()
+            window.goHome()
             return;
         }        
 
