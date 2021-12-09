@@ -15,7 +15,7 @@
     ],
     "scope": "https://mycredential.eu/",
     "start_url": "/",
-    "display": "standalone",
+    "display": "browser",
     "orientation": "portrait",
     "background_color": "#919597",
     "theme_color": "#919597"
