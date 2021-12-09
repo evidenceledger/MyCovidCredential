@@ -13,7 +13,7 @@
             "type": "image/png"
         }
     ],
-    "scope": "https://mycredential.eu/",
+    "scope": "/",
     "start_url": "/",
     "display": "browser",
     "orientation": "portrait",
