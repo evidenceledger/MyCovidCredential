@@ -119,7 +119,8 @@ export class MicroWallet extends AbstractPage {
             console.log("In clipboard:", qrContent)
         } catch (error) {
             console.error("Error reading from clipboard:", error)
-            alert(error)            
+            return;
+//            alert(error)            
         }
         if (qrContent &&
             (typeof qrContent === 'string' || qrContent instanceof String) &&
@@ -183,7 +184,7 @@ export class AskUserToStoreQR extends AbstractPage {
         
                 <div class="w3-padding-16">
         
-                    <button @click=${()=>this.saveQRCertificate()} class="btn color-secondary hover-color-secondary w3-xlarge w3-round-xlarge">${T("Save")}</button>
+                    <button @click=${()=>this.saveQRCertificate(qrcode)} class="btn color-secondary hover-color-secondary w3-xlarge w3-round-xlarge">${T("Save")}</button>
         
                 </div>
         
@@ -252,11 +253,11 @@ export class AskUserToStoreQR extends AbstractPage {
     
 
 
-    async saveQRCertificate() {
+    async saveQRCertificate(qrcode) {
 
         // Store it in local storage
-        //window.localStorage.setItem("MYEUDCC", this.QRCertificate)
-        await set("MYEUDCC", this.QRCertificate)
+        //window.localStorage.setItem("MYEUDCC", qrcode)
+        await set("MYEUDCC", qrcode)
 
         let params = new URLSearchParams(document.location.search.substring(1));
         let eudcc = params.get("eudcc");

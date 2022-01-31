@@ -2,13 +2,13 @@
 
 [![GitHub license](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/evidenceledger/VerificaCOVID/blob/main/LICENSE)
 
-Extremely simple and privacy-preserving PWA (Progressive Web Application) for verifying the EU Digital COVID Certificates.
+Extremely simple and privacy-preserving PWA (Progressive Web Application) for storing locally a single EU Digital COVID Certificates.
 
 ## Installation and building
 
 Clone the repository to your machine:
 
-    git clone git@github.com:evidenceledger/VerificaCOVIDng.git
+    git clone git@github.com:evidenceledger/MyCovidCredential.git
 
 Install dependencies:
 
