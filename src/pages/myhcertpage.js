@@ -89,13 +89,8 @@ export class DisplayMyHcert extends AbstractPage {
                 <button @click=${()=> this.navigateToQR(qrContent)} class="btn color-secondary hover-color-secondary large round-xlarge mb-16">${T("Show QR")}</button>
                 <p>Display the QR code so it can be verified.</p>
             </div>
-            <!-- <div class="w3-card w-50 pd-10">
-                <button @click=${()=>this.deleteQRCertificate()} class="btn color-secondary hover-color-secondary large round-xlarge mb-16">${T("Delete QR")}</button>
-                <p>Delete the QR from this device.</p>
-            </div> -->
-
             <div class="w3-card w-50 pd-10">
-                <button @click=${()=>gotoPage("AskUserToConfirmDeleteQR")} class="btn color-secondary hover-color-secondary large round-xlarge mb-16">${T("Delete QR")}</button>
+                <button @click=${()=>this.deleteQRCertificate()} class="btn color-secondary hover-color-secondary large round-xlarge mb-16">${T("Delete QR")}</button>
                 <p>Delete the QR from this device.</p>
             </div>
 
