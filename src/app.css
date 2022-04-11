@@ -53,6 +53,8 @@ img{vertical-align:middle}
 .mb-16{margin-bottom: 16px;}
 .mb-32{margin-bottom: 32px;}
 .mb-100{margin-bottom: 100px;}
+.ml-10{margin-left: 10px;}
+.mr-10{margin-right: 10px;}
 .w-50{width: 50%;}
 .hide{display:none}
 .show{display:block}

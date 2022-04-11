@@ -338,9 +338,12 @@ export class AskUserToConfirmDeleteQR extends AbstractPage {
                 <div class="w3-container w3-padding-16">
                     <p>${T("Please confirm that you want to delete the certificate.")}</p>
                 </div>
-        
+
                 <div class="w3-padding-16">
-                    <button @click=${()=>deleteQRCertificate()} class="btn color-secondary hover-color-secondary large round-xlarge mb-16">${T("Delete QR")}</button>
+
+                    <button @click=${()=>window.location.replace(document.location.origin)} class="btn mr-10 w3-marging-right color-secondary hover-color-secondary large round-xlarge mb-16">${T("Cancel")}</button>
+
+                    <button @click=${()=>deleteQRCertificate()} class="btn ml-10 color-secondary hover-color-secondary large round-xlarge mb-16">${T("Delete QR")}</button>
                 
                 </div>
         
