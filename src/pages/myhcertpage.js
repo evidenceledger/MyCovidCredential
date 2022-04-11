@@ -90,7 +90,7 @@ export class DisplayMyHcert extends AbstractPage {
                 <p>Display the QR code so it can be verified.</p>
             </div>
             <div class="w3-card w-50 pd-10">
-                <button @click=${()=>this.deleteQRCertificate()} class="btn color-secondary hover-color-secondary large round-xlarge mb-16">${T("Delete QR")}</button>
+                <button @click=${()=>gotoPage("AskUserToConfirmDeleteQR")} class="btn color-secondary hover-color-secondary large round-xlarge mb-16">${T("Delete QR")}</button>
                 <p>Delete the QR from this device.</p>
             </div>
 
@@ -308,6 +308,17 @@ export class AskUserToStoreQR extends AbstractPage {
     
 }
 
+async function deleteQRCertificate() {
+
+    await del("MYEUDCC")
+    await caches.delete("mycache")
+
+    // Reload the application with a clean URL
+    window.location.replace(document.location.origin)
+
+}
+
+
 export class AskUserToConfirmDeleteQR extends AbstractPage {
 
     constructor(id) {
@@ -329,7 +340,7 @@ export class AskUserToConfirmDeleteQR extends AbstractPage {
                 </div>
         
                 <div class="w3-padding-16">
-                    <button @click=${()=>this.deleteQRCertificate()} class="btn color-secondary hover-color-secondary large round-xlarge mb-16">${T("Delete QR")}</button>
+                    <button @click=${()=>deleteQRCertificate()} class="btn color-secondary hover-color-secondary large round-xlarge mb-16">${T("Delete QR")}</button>
                 
                 </div>
         

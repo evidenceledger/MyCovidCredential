@@ -13,7 +13,7 @@ import { RefreshKeys } from './pages/refreshkeys'
 import { SelectLanguage } from "./i18n/i18";
 import { Help } from './pages/help';
 import { DisplayHcert } from './pages/hcertpage'
-import { DisplayMyHcert } from "./pages/myhcertpage";
+import { DisplayMyHcert, AskUserToConfirmDeleteQR } from "./pages/myhcertpage";
 import { MicroWallet, AskUserToStoreQR } from "./pages/microwallet";
 import { DisplayQR } from "./pages/displayqr";
 import { SelectCamera } from './pages/selectcamera';
@@ -65,7 +65,7 @@ export var pageDefs = [
     },
     {
         name: "AskUserToConfirmDeleteQR",
-        className: AskUserToStoreQR
+        className: AskUserToConfirmDeleteQR
     },
     {
         name: "DisplayQR",
