@@ -89,8 +89,13 @@ export class DisplayMyHcert extends AbstractPage {
                 <button @click=${()=> this.navigateToQR(qrContent)} class="btn color-secondary hover-color-secondary large round-xlarge mb-16">${T("Show QR")}</button>
                 <p>Display the QR code so it can be verified.</p>
             </div>
-            <div class="w3-card w-50 pd-10">
+            <!-- <div class="w3-card w-50 pd-10">
                 <button @click=${()=>this.deleteQRCertificate()} class="btn color-secondary hover-color-secondary large round-xlarge mb-16">${T("Delete QR")}</button>
+                <p>Delete the QR from this device.</p>
+            </div> -->
+
+            <div class="w3-card w-50 pd-10">
+                <button @click=${()=>gotoPage("AskUserToConfirmDeleteQR")} class="btn color-secondary hover-color-secondary large round-xlarge mb-16">${T("Delete QR")}</button>
                 <p>Delete the QR from this device.</p>
             </div>
 
@@ -308,3 +313,36 @@ export class AskUserToStoreQR extends AbstractPage {
     
 }
 
+export class AskUserToConfirmDeleteQR extends AbstractPage {
+
+    constructor(id) {
+        super(id)
+    }
+
+    async enter(qrcode) {
+
+        let theHtml = html`
+        <div class="container">
+            <div class="w3-card-4 w3-center" style="margin-top:100px;">
+        
+                <header class="w3-container color-primary" style="padding:10px">
+                    <h1>${T("Are you sure?")}</h1>
+                </header>
+        
+                <div class="w3-container w3-padding-16">
+                    <p>${T("Please confirm that you want to delete the certificate.")}</p>
+                </div>
+        
+                <div class="w3-padding-16">
+                    <button @click=${()=>this.deleteQRCertificate()} class="btn color-secondary hover-color-secondary large round-xlarge mb-16">${T("Delete QR")}</button>
+                
+                </div>
+        
+            </div>
+        </div>
+        `
+
+        this.render(theHtml)
+    }
+    
+}

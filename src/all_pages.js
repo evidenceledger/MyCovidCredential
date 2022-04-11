@@ -64,6 +64,10 @@ export var pageDefs = [
         className: AskUserToStoreQR
     },
     {
+        name: "AskUserToConfirmDeleteQR",
+        className: AskUserToStoreQR
+    },
+    {
         name: "DisplayQR",
         className: DisplayQR
     },
